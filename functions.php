@@ -44,9 +44,9 @@ if(!is_admin()){
     // Load all other scripts you may need...
     wp_register_script('modernizer', get_bloginfo('template_directory') .'/js/modernizr.js','jquery'); // Always include Modernizr when using HTML5
     // *You should always redownload a minified/minimal version of Modernizr when pushing to a live site @ http://modernizr.com/download/
-    // *for dev we have loaded a minfied version of the full Modernizr library...
     wp_enqueue_script('modernizer'); // Automatically load Modernizr into the header…
     //wp_register_script( 'ui', get_bloginfo('template_directory') .'/js/jquery-ui-1.8.18.custom.min.js','jquery'); // Load only if you need to use the jQuery UI library
+    // Whenver possible, try to include any scripts bellow this comment in the footer and not the header...
 	}
 }
 

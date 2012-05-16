@@ -7,7 +7,7 @@
  */
 
 get_header(); ?>
-
+<article>
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 					<?php previous_post_link( '%link', '' . _x( '&larr;', 'Previous post link', 'themeName' ) . ' %title' ); ?>
@@ -38,6 +38,6 @@ get_header(); ?>
 				<?php comments_template( '', true ); ?>
 
 <?php endwhile; // end of the loop. ?>
-
+</article>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

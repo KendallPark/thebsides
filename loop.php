@@ -1,7 +1,6 @@
 <?php
 /**
  * The loop that displays posts. 
- * DUE FOR A RECODE AS I WANT MY OWN
  * @package WordPress
  * @subpackage #themeName
  */
@@ -20,7 +19,7 @@
 		<?php get_search_form(); ?>
 
 <?php endif; ?>
-
+<article>
 <?php
 	/* Start the Loop.
 	 *
@@ -115,7 +114,7 @@
 	<?php endif; // This was the if statement that broke the loop into three parts based on categories. ?>
 
 <?php endwhile; // End the loop. Whew. ?>
-
+</article>
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if (  $wp_query->max_num_pages > 1 ) : ?>
 				<?php next_posts_link( __( '&larr; Older posts', 'themeName' ) ); ?>

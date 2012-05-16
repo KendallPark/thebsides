@@ -7,7 +7,7 @@
  */
 
 get_header(); ?>
-
+<section>
 				<h1><?php
 					printf( __( 'Category Archives: %s', 'themeName' ), '' . single_cat_title( '', false ) . '' );
 				?></h1>
@@ -22,6 +22,6 @@ get_header(); ?>
 				 */
 				get_template_part( 'loop', 'category' );
 				?>
-
+</section>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

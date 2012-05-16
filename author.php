@@ -3,11 +3,11 @@
  * The template for displaying Author Archive pages.
  *
  * @package WordPress
- * @subpackage #themeName
+ * @subpackage themeName
  */
 
 get_header(); ?>
-
+<section>
 <?php
 	/* Queue the first post, that way we know who
 	 * the author is when we try to get their name,
@@ -45,6 +45,6 @@ if ( get_the_author_meta( 'description' ) ) : ?>
 	 */
 	 get_template_part( 'loop', 'author' );
 ?>
-
+</section>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -3,7 +3,7 @@
  * The template for displaying attachments.
  *
  * @package WordPress
- * @subpackage #themeName
+ * @subpackage themeName
  */
 
 get_header(); ?>

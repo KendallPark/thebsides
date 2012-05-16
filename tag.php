@@ -7,7 +7,7 @@
  */
 
 get_header(); ?>
-
+<section>
 				<h1><?php
 					printf( __( 'Tag Archives: %s', 'themeName' ), '' . single_tag_title( '', false ) . '' );
 				?></h1>
@@ -19,6 +19,6 @@ get_header(); ?>
  */
  get_template_part( 'loop', 'tag' );
 ?>
-
+</section>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -7,7 +7,7 @@
  */
 
 get_header(); ?>
-
+<section>
 <?php if ( have_posts() ) : ?>
 				<h1><?php printf( __( 'Search Results for: %s', 'themeName' ), '' . get_search_query() . '' ); ?></h1>
 				<?php
@@ -22,6 +22,6 @@ get_header(); ?>
 					<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'themeName' ); ?></p>
 					<?php get_search_form(); ?>
 <?php endif; ?>
-
+</section>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

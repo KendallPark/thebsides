@@ -8,12 +8,12 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Starkers
- * @since Starkers 3.0
+ * @subpackage themeName
+ * @since #themeName 1.0
  */
 
 get_header(); ?>
-
+<article>
 <?php
 	/* Queue the first post, that way we know
 	 * what date we're dealing with (if that is the case).
@@ -24,7 +24,6 @@ get_header(); ?>
 	if ( have_posts() )
 		the_post();
 ?>
-
 			<h1>
 <?php if ( is_day() ) : ?>
 				<?php printf( __( 'Daily Archives: %s', 'themeName' ), get_the_date() ); ?>
@@ -35,8 +34,7 @@ get_header(); ?>
 <?php else : ?>
 				<?php _e( 'Blog Archives', 'themeName' ); ?>
 <?php endif; ?>
-			</h1>
-
+			</h1>	
 <?php
 	/* Since we called the_post() above, we need to
 	 * rewind the loop back to the beginning that way
@@ -50,6 +48,6 @@ get_header(); ?>
 	 */
 	 get_template_part( 'loop', 'archive' );
 ?>
-
+</article>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
