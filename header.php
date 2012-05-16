@@ -10,7 +10,7 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-<meta http-equiv="Content-Type" content="text/html" charset="<?php bloginfo( 'charset' ); ?>" />
+<meta charset="<?php bloginfo( 'charset' ); ?>" />
 <title><?php
 	/*
 	 * Print the <title> tag based on what is being viewed.
@@ -54,10 +54,10 @@
 		</h1>
 		<p><?php bloginfo( 'description' ); ?></p>
 
-		<div id="access" role="navigation">
+		<div id="access">
 	  	<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
-			<a href="#content" title="<?php esc_attr_e( 'Skip to content', 'themeName' ); ?>"><?php _e( 'Skip to content', 'themeName' ); ?></a>
+			<a id="skip" href="#content" title="<?php esc_attr_e( 'Skip to content', 'themeName' ); ?>"><?php _e( 'Skip to content', 'themeName' ); ?></a>
 			<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
-			<nav><?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?></nav>
+			<nav role="navigation"><?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?></nav>
 		</div><!-- #access -->
 	</header>
