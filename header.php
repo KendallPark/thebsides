@@ -7,7 +7,8 @@
  * @package WordPress
  * @subpackage #themeName
  */
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -47,7 +48,6 @@
 </head>
 
 <body id="<?php echo basename(get_permalink()); ?>" <?php body_class(); ?>>
-
 	<header>
 		<h1>
 			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>

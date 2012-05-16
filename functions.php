@@ -595,3 +595,5 @@ function my_remove_menu_elements()
 {
 	remove_submenu_page( 'themes.php', 'theme-editor.php' );
 }
+
+require( dirname( __FILE__ ) . '/theme-options.php' );
