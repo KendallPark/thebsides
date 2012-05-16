@@ -17,8 +17,8 @@ get_header(); ?>
 					<?php } ?>				
 
 						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'twentyten' ), 'after' => '' ) ); ?>
-						<?php edit_post_link( __( 'Edit', 'twentyten' ), '', '' ); ?>
+						<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'themeName' ), 'after' => '' ) ); ?>
+						<?php edit_post_link( __( 'Edit', 'themeName' ), '', '' ); ?>
 
 				<?php comments_template( '', true ); ?>
 
