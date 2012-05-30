@@ -6,7 +6,11 @@
  * @subpackage themeName
  */
 
-get_header(); ?>
+get_header();
+
+$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+?>
+
 <section>
 <?php
 	/* Queue the first post, that way we know who
@@ -20,6 +24,7 @@ get_header(); ?>
 		the_post();
 ?>
 
+
 				<h1><?php printf( __( 'Author Archives: %s', 'themeName' ), "<a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a>" ); ?></h1>
 
 <?php
@@ -31,6 +36,45 @@ if ( get_the_author_meta( 'description' ) ) : ?>
 							<?php the_author_meta( 'description' ); ?>
 
 <?php endif; ?>
+
+	<?php if(isset($curauth->fb) || isset($curauth->gplus) || isset($curauth->pinterest) || isset($curauth->tweet)) { ?>
+		 <h5 class="date">Connect with <?php echo $curauth->nickname; ?>:&nbsp;
+		
+		<?php if( $curauth->fb == '') { echo '';} 
+		else { ?> 
+			<?php if($curauth->gplus == '' && $curauth->pinterest =='' && $curauth->tweet =='') { ?>
+				<a href="<?php echo $curauth->fb; ?>" target="_blank" >Facebook</a>
+			<?php } else { ?>
+				<a href="<?php echo $curauth->fb; ?>" target="_blank" >Facebook</a> | 
+				<?php }
+		} ?>
+		
+		<?php if( $curauth->gplus == '') { echo '';} 
+		else { ?>
+			<?php if($curauth->pinterest == '' && $curauth->tweet =='') { ?>
+				<a href="<?php echo $curauth->gplus; ?>" target"_blank" >Google+</a> 
+			<?php } else { ?>
+				<a href="<?php echo $curauth->gplus; ?>" target="_blank" >Google+</a> |
+				<?php }
+		 } ?>
+		
+		<?php if( $curauth->pinterest == '') { echo ''; } 
+		else { ?>
+			<?php if($curauth->tweet =='') { ?>
+				<a href="<?php echo $curauth->gplus; ?>" target"_blank" >Pinterest</a> 
+			<?php } else { ?>
+				<a href="<?php echo $curauth->pinterest; ?>" target="_blank" >Pinterest</a> |
+				<?php }
+	  	} ?>	
+		
+		<?php if( $curauth->tweet == '') { echo''; } 
+		else { ?>
+		<a href="<?php echo $curauth->tweet; ?>" target="_blank" >Twitter</a>
+		<?php }  ?>	
+		
+		
+		</h5>
+	<?php } ?>
 
 <?php
 	/* Since we called the_post() above, we need to

@@ -29,6 +29,44 @@ get_header(); ?>
 							</a>
 <?php endif; ?>
 
+							<!--social connection links-->
+					<?php if((get_the_author_meta('fb') !='') || (get_the_author_meta('gplus') !='') || (get_the_author_meta('pinterest') !='') || (get_the_author_meta('tweet') !='')) { ?>
+						 <h5 class="date">Connect with <?php the_author_meta('nickname')?>:&nbsp; 
+
+					<?php if( get_the_author_meta('fb') =='') { echo '';} 
+					else { ?> 
+						<?php if(get_the_author_meta('gplus') == '' && get_the_author_meta('pinterest') =='' && get_the_author_meta('tweet') =='') { ?>
+							<a href="<?php the_author_meta('fb') ?>" target="_blank" >Facebook</a>
+						<?php } else { ?>
+							<a href="<?php the_author_meta('fb') ?>" target="_blank" >Facebook</a> | 
+						<?php }
+					} ?>
+
+					<?php if( get_the_author_meta('gplus') == '') { echo '';} 
+					else { ?>
+						<?php if(get_the_author_meta('pinterest') == '' && get_the_author_meta('tweet') =='') { ?>
+							<a href="<?php the_author_meta('gplus') ?>" target"_blank" rel="author" >Google+</a> 
+						<?php } else { ?>
+							<a href="<?php the_author_meta('gplus') ?>" target="_blank" rel="author" >Google+</a> |
+						<?php }
+					 } ?>
+
+					<?php if( get_the_author_meta('pinterest') == '') { echo ''; } 
+					else { ?>
+						<?php if(get_the_author_meta('tweet') =='') { ?>
+							<a href="<?php the_author_meta('pinterest') ?>" target"_blank" >Pinterest</a> 
+						<?php } else { ?>
+							<a href="<?php get_the_author_meta('pinterest') ?>" target="_blank" >Pinterest</a> |
+						<?php }
+				  	} ?>	
+
+					<?php if( get_the_author_meta('tweet') == '') { echo''; } 
+					else { ?>
+						<a href="<?php the_author_meta('tweet') ?>" target="_blank" >Twitter</a>
+					<?php }  ?>					
+						</h5>
+					<?php } ?>
+
 						<?php themeName_posted_in(); ?>
 						<?php edit_post_link( __( 'Edit', 'themeName' ), '', '' ); ?>
 
