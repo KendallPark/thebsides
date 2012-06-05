@@ -10,13 +10,7 @@ function register_scripts() {
         return;
     }
 
-    $url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'; // The URL to check against
-    $test_url = @fopen($url,'r'); // Test parameters
-
-    if($test_url == false)
-        $url = bloginfo('template_url').'/js/libs/jquery-1.7.1.min.js';
-
-    define('JQUERY_PATH', $url);
+    define_jquery_path();
 
     wp_deregister_script('jquery'); //deregistering jquery from wordpress
 
@@ -35,6 +29,16 @@ function register($name, $path) {
 function register_and_enque($name, $path) {
     register($name, $path);
     wp_enqueue_script($name);
+}
+
+function define_jquery_path() {
+    $url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'; // The URL to check against
+    $test_url = @fopen($url,'r'); // Test parameters
+
+    if($test_url == false)
+        $url = bloginfo('template_url').'/js/libs/jquery-1.7.1.min.js';
+
+    define('JQUERY_PATH', $url);
 }
 
 ?>
