@@ -1,16 +1,4 @@
 <?php
-/**
- * @package WordPress
- * @subpackage #themeName
- */
-<<<<<<< HEAD
-
-define("THEME_DIR", bloginfo('template_directory'));
-
-// includes 
-require_once('includes/post-types.php');
-require_once('includes/widgets-custom.php');
-
 
 // Remove junk from wp_head()
 remove_action('wp_head', 'rsd_link');
@@ -22,110 +10,6 @@ remove_action('wp_head', 'feed_links_extra', 3);
 remove_action('wp_head', 'start_post_rel_link', 10, 0);
 remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
- 
-function integ_add_custom_user_profile_fields( $user ) {
-?>
-	<h3>Social Profile Information</h3>
-	<table class="form-table">
-		<tr>
-			<th>
-				<label for="google">Google
-			</label></th>
-			<td>
-				<input type="text" name="gplus" id="gplus" value="<?php echo esc_attr( get_the_author_meta( 'gplus', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description">Please provide a link to your Google+ profile</span>
-			</td>
-		</tr>
-		<tr>
-			<th>
-				<label for="facebook">Facebook
-			</label></th>
-			<td>
-				<input type="text" name="fb" id="fb" value="<?php echo esc_attr( get_the_author_meta( 'fb', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description">Please provide a link to your Facebook profile</span>
-			</td>
-		</tr>
-		<tr>
-			<th>
-				<label for="pinterest">Pinterest
-			</label></th>
-			<td>
-				<input type="text" name="pinterest" id="pinterest" value="<?php echo esc_attr( get_the_author_meta( 'pinterest', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description">Please provide a link to your Pinterest profile</span>
-			</td>
-		</tr>
-		<tr>
-			<th>
-				<label for="twitter">Twitter
-			</label></th>
-			<td>
-				<input type="text" name="tweet" id="tweet" value="<?php echo esc_attr( get_the_author_meta( 'tweet', $user->ID ) ); ?>" class="regular-text" /><br />
-				<span class="description">Please provide a link to your Twitter profile</span>
-			</td>
-		</tr>
-	</table>
-<?php }
-function integ_save_custom_user_profile_fields( $user_id ) {
-	if ( !current_user_can( 'edit_user', $user_id ) )
-		return FALSE;
-	update_usermeta( $user_id, 'gplus', $_POST['gplus'] );
-	update_usermeta( $user_id, 'fb', $_POST['fb'] );
-	update_usermeta( $user_id, 'tweet', $_POST['tweet'] );
-	update_usermeta( $user_id, 'pinterest', $_POST['pinterest'] );
-}
-add_action( 'show_user_profile', 'integ_add_custom_user_profile_fields' );
-add_action( 'edit_user_profile', 'integ_add_custom_user_profile_fields' );
-add_action( 'personal_options_update', 'integ_save_custom_user_profile_fields' );
-add_action( 'edit_user_profile_update', 'integ_save_custom_user_profile_fields' );
-
-// Includes
-require_once('includes/post-types.php');
-require_once('includes/sidebars.php');
-require_once('includes/user-settings.php');
-require_once('includes/scripts.php');
-require_once('includes/theme-setup.php');
-require_once('includes/admin-setup.php');
-
-<<<<<<< HEAD
-/**
- * Includes scripts and styles (through wp_head())
- * Register ALL of your scripts in this function to prevent conflicts...
- */
- 
-function registerScripts() {
-if(!is_admin()){
-	// Ckeck if Google's jQuery CDN is working and if it is load their jQuery library, if it is not, fallback to a local jQuery library script…
-	$url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'; // The URL to check against
-	$test_url = @fopen($url,'r'); // Test parameters
-	if($test_url !== false) { // Test if the URL exists
-    	function load_external_jQuery() { // Load external file
-        	wp_deregister_script( 'jquery' ); // Deregisters the default WordPress jQuery
-        	wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'); // Register the external file. * be sure to update version numbers whenever there is a newer version of jQuery
-        	wp_enqueue_script('jquery'); // Enqueue the external file
-    	}
-		add_action('wp_enqueue_scripts', 'load_external_jQuery'); // Initiate the function
-	} else {
-    	function load_local_jQuery() {
-        	wp_deregister_script('jquery'); // Initiate the function
-        	wp_register_script('jquery', bloginfo('template_url').'/js/libs/jquery-1.7.1.min.js', __FILE__, false, '1.7.1', true); // Register the local file
-        	wp_enqueue_script('jquery'); // Enqueue the local file
-    	}
-		add_action('wp_enqueue_scripts', 'load_local_jQuery'); // Initiate the function
-	}
-    
-    // Load all other scripts you may need...
-    wp_register_script('modernizer', get_bloginfo('template_directory') .'/js/modernizr.js','jquery'); // Always include Modernizr when using HTML5
-    // *You should always redownload a minified/minimal version of Modernizr when pushing to a live site @ http://modernizr.com/download/
-    wp_enqueue_script('modernizer'); // Automatically load Modernizr into the header…
-    //wp_register_script( 'ui', get_bloginfo('template_directory') .'/js/jquery-ui-1.8.18.custom.min.js','jquery'); // Load only if you need to use the jQuery UI library
-    // Whenver possible, try to include any scripts bellow this comment in the footer and not the header...
-	}
-}
-
-add_action( 'init', 'registerScripts' );
-
-if ( ! isset( $content_width ) )
-	$content_width = 640;
 
 /** Tell WordPress to run themeName_setup() when the 'after_setup_theme' hook is run. */
 add_action( 'after_setup_theme', 'themeName_setup' );
@@ -151,7 +35,7 @@ function themeName_setup() {
 
 	// This theme uses post thumbnails
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 200, 255, true ); // Normal post thumbnails  
+	set_post_thumbnail_size( 200, 255, true ); // Normal post thumbnails
     add_image_size( 'screen-shot', 720, 540 ); // Full size screen
 
 	// Add default posts and comments RSS feed links to head
@@ -332,7 +216,6 @@ function remove_some_wp_widgets(){
 
 add_action('widgets_init','remove_some_wp_widgets', 1);
 
-
 /**
  * Removes the default styles that are packaged with the Recent Comments widget.
  */
@@ -344,7 +227,7 @@ add_action( 'widgets_init', 'themeName_remove_recent_comments_style' );
 
 if ( ! function_exists( 'themeName_posted_on' ) ) :
 /**
- * Prints HTML with meta information for the current post—date/time and author.
+ * Prints HTML with meta information for the current post�date/time and author.
  */
 function themeName_posted_on() {
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'themeName' ),
@@ -388,128 +271,4 @@ function themeName_posted_in() {
 }
 endif;
 
-/**
- * Load custom login logo to login page
- */
-function custom_login_logo() {
-  echo '<style type="text/css">
-    h1 a { background-image:url('.get_bloginfo('template_directory').'/img/login/logo.png) !important; }
-    </style>';
-}
-
-add_action('login_head', 'custom_login_logo');
-
-/**
- * Customize the admin footer
- */
- function modify_footer_admin () {
-  echo 'Created by <a href="http://integritystl.com" target="_blank">Integrity</a>.';
-}
-
-add_filter('admin_footer_text', 'modify_footer_admin');
-
-/**
- * Add a custom admin dashboard welcome widget
- */
-function custom_dashboard_widget() {
-	echo "<p>Welcome to your custom WordPress site built by Integrity!</p>";
-}
-function add_custom_dashboard_widget() {
-	wp_add_dashboard_widget('custom_dashboard_widget', 'Integrity Welcomes You To WordPress!', 'custom_dashboard_widget');
-}
-add_action('wp_dashboard_setup', 'add_custom_dashboard_widget');
-
-/**
- * Remove useless admin dashboard widgets
- */
-function disable_default_dashboard_widgets() {
-
-	remove_meta_box('dashboard_right_now', 'dashboard', 'core');
-	remove_meta_box('dashboard_recent_comments', 'dashboard', 'core');
-	remove_meta_box('dashboard_incoming_links', 'dashboard', 'core');
-	remove_meta_box('dashboard_plugins', 'dashboard', 'core');
-	remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
-	remove_meta_box('dashboard_recent_drafts', 'dashboard', 'core');
-	remove_meta_box('dashboard_primary', 'dashboard', 'core');
-	remove_meta_box('dashboard_secondary', 'dashboard', 'core');
-}
-add_action('admin_menu', 'disable_default_dashboard_widgets');
-
-/**
- * Remove any unnecessary admin menus & sub-menus
- */
-
-function remove_menus () {
-global $menu;
-	$restricted = array(__('Links'));
-	// Additional options - > __('Dashboard'), __('Pages'), , __('Comments'), __('Media')
-	end ($menu);
-	while (prev($menu)){
-		$value = explode(' ',$menu[key($menu)][0]);
-		if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
-	}
-}
-
-add_action('admin_menu', 'remove_menus');
-
-function remove_submenus() {
-  global $submenu;
-  //Dashboard menu
-  //unset($submenu['index.php'][10]); // Removes Updates
-  //Posts menu
-  //unset($submenu['edit.php'][5]); // Leads to listing of available posts to edit
-  //unset($submenu['edit.php'][10]); // Add new post
-  //unset($submenu['edit.php'][15]); // Remove categories
-  unset($submenu['edit.php'][16]); // Removes Post Tags
-  //Media Menu
-  //unset($submenu['upload.php'][5]); // View the Media library
-  //unset($submenu['upload.php'][10]); // Add to Media library
-  //Links Menu
-  //unset($submenu['link-manager.php'][5]); // Link manager
-  //unset($submenu['link-manager.php'][10]); // Add new link
-  //unset($submenu['link-manager.php'][15]); // Link Categories
-  //Pages Menu
-  //unset($submenu['edit.php?post_type=page'][5]); // The Pages listing
-  unset($submenu['edit.php?post_type=page'][10]); // Add New page
-  //Appearance Menu
-  unset($submenu['themes.php'][5]); // Removes 'Themes'
-  //unset($submenu['themes.php'][7]); // Widgets
-  unset($submenu['themes.php'][15]); // Removes Theme Installer tab
-  //Plugins Menu
-  //unset($submenu['plugins.php'][5]); // Plugin Manager
-  //unset($submenu['plugins.php'][10]); // Add New Plugins
-  unset($submenu['plugins.php'][15]); // Plugin Editor
-  //Users Menu
-  //unset($submenu['users.php'][5]); // Users list
-  //unset($submenu['users.php'][10]); // Add new user
-  //unset($submenu['users.php'][15]); // Edit your profile
-  //Tools Menu
-  //unset($submenu['tools.php'][5]); // Tools area
-  //unset($submenu['tools.php'][10]); // Import
-  //unset($submenu['tools.php'][15]); // Export
-  //unset($submenu['tools.php'][20]); // Upgrade plugins and core files
-  //Settings Menu
-  //unset($submenu['options-general.php'][10]); // General Options
-  //unset($submenu['options-general.php'][15]); // Writing
-  //unset($submenu['options-general.php'][20]); // Reading
-  //unset($submenu['options-general.php'][25]); // Discussion
-  //unset($submenu['options-general.php'][30]); // Media
-  //unset($submenu['options-general.php'][35]); // Privacy
-  //unset($submenu['options-general.php'][40]); // Permalinks
-  //unset($submenu['options-general.php'][45]); // Misc
-}
-add_action('admin_menu', 'remove_submenus');
-
-// Remove Theme Editor
-
-add_action('admin_init', 'my_remove_menu_elements', 102);
-
-function my_remove_menu_elements()
-{
-	remove_submenu_page( 'themes.php', 'theme-editor.php' );
-}
-
-=======
-// Include theme options
->>>>>>> Functions-Refactoring
-require( dirname( __FILE__ ) . '/theme-options.php' );
+?>
