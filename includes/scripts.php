@@ -4,6 +4,9 @@
  * Register ALL of your scripts in this function to prevent conflicts...
  */
 
+add_action( 'init', 'register_scripts');
+
+
 function register_scripts() {
 
     if(is_admin()) {
@@ -18,9 +21,6 @@ function register_scripts() {
     register_and_enque('modernizer', get_bloginfo('template_directory') .'/js/modernizr.js','jquery');
 
 }
-
-add_action( 'init', 'register_scripts');
-
 
 function register($name, $path) {
     wp_register_script($name, $path);
