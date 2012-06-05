@@ -4,9 +4,12 @@
  * @subpackage #themeName
  */
 
+define("THEME_DIR", bloginfo('template_directory'));
+
 // includes 
 require_once('includes/post-types.php');
-require_once('includes/sidebars.php');
+require_once('includes/widgets-custom.php');
+
 
 // Remove junk from wp_head()
 remove_action('wp_head', 'rsd_link');
