@@ -46,14 +46,14 @@
 	wp_head();
 ?>
 </head>
-<?php 
-$options = get_option('themeName');
-echo $options['1'].'<br/>'; 
-echo $options['2'].'<br/>';
-echo $options['3'].'<br/>'; 
-echo $options['9'].'<br/>'; 
-$options = get_option('multi_text');
-echo $options['multi_text'][0].'<br/>';
+<?php
+//$options = get_option('themeName');
+//echo $options['1'].'<br/>';
+//echo $options['2'].'<br/>';
+//echo $options['3'].'<br/>';
+//echo $options['9'].'<br/>';
+//$options = get_option('multi_text');
+//echo $options['multi_text'][0].'<br/>';
 ?>
 <body id="<?php echo basename(get_permalink()); ?>" <?php body_class(); ?>>
 	<header>
