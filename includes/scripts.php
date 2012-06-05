@@ -18,17 +18,23 @@ function register_scripts() {
 
     define('JQUERY_PATH', $url);
 
-    function load_jQuery() {
-        wp_deregister_script('jquery');
-        wp_register_script('jquery', JQUERY_PATH, __FILE__, false, '1.7.1', true);
-        wp_enqueue_script('jquery');
-    }
-    add_action('wp_enqueue_scripts', 'load_jQuery');
+    wp_deregister_script('jquery'); //deregistering jquery from wordpress
 
-    wp_register_script('modernizer', get_bloginfo('template_directory') .'/js/modernizr.js','jquery');
-    wp_enqueue_script('modernizer');
+    register_and_enque("jquery", JQUERY_PATH);
+    register_and_enque('modernizer', get_bloginfo('template_directory') .'/js/modernizr.js','jquery');
+
 }
 
 add_action( 'init', 'register_scripts');
+
+
+function register($name, $path) {
+    wp_register_script($name, $path);
+}
+
+function register_and_enque($name, $path) {
+    register($name, $path);
+    wp_enqueue_script($name);
+}
 
 ?>
