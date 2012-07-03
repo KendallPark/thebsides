@@ -356,3 +356,72 @@ body > img:only-child {
   margin: 1em auto;
   padding: 0;
 }
+
+/*****************/
+/* NEW DEBUGGING */
+/*****************/
+
+
+/* SHOW EMPTY LINKS 
+
+a[href = ""] {
+  background: red;
+  color: white;
+  font-size: x-large;
+}
+a[href = "#"] {
+  background: red;
+  color: white;
+  font-size: x-large;
+}
+*/
+
+/* ABSOLUTE LINKS 
+
+a[href ^= http] {
+  background: red;
+  color: white;
+  font-size: x-large;
+}
+*/
+
+/* EXTERNAL LINKS, replace domain-name
+
+a[href ^= 'http']:not([href *= 'domain-name.']) {
+  background: red;
+  color:white;
+  font-size:x-large;
+}
+*/
+
+/* SHOW DOCUMENT HEAD 
+
+head {
+  display: block;
+  border-bottom: 5px solid red;
+}
+*/
+
+/* SHOW SCRIPTS 
+
+script, style, link {
+  display: block;
+  white-space: pre;
+  font-family: monospace;
+}
+*/
+
+/* PNG IMAGES
+
+img[src $= .png] {
+	filter: invert(100%);
+}
+*/
+
+/* JPG IMAGES
+
+img[src $= .jpg] {
+	filter: invert(100%);
+}
+*/
+
