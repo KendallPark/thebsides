@@ -6,7 +6,7 @@
 
 
 // Includes
-require_once('includes/post-types/post-types.php');
+require_once('includes/custom-post-types/post-types.php');
 require_once('includes/user-settings.php');
 require_once('includes/scripts.php');
 require_once('includes/theme-setup.php');
