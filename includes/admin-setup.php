@@ -5,7 +5,7 @@
  */
 function custom_login_logo() {
   echo '<style type="text/css">
-    h1 a { background-image:url('.get_bloginfo('template_directory').'/img/login/logo.png) !important; }
+    h1 a { background-image:url('.get_bloginfo('template_directory').'/images/logo.png) !important; }
     </style>';
 }
 
@@ -24,7 +24,7 @@ add_filter('admin_footer_text', 'modify_footer_admin');
  * Add a custom admin dashboard welcome widget
  */
 function custom_dashboard_widget() {
-	echo "<p>Welcome to your custom WordPress site built by Integrity!</p>";
+	echo '<h2>Welcome to your custom WordPress site built by <a href="http://integritystl.com" target="_blank">Integrity!</a></h2><p>If you have any questions or need any help, please do not hesitate to call us!</p><strong>Phone: 314-727-3600</strong>';
 }
 function add_custom_dashboard_widget() {
 	wp_add_dashboard_widget('custom_dashboard_widget', 'Integrity Welcomes You To WordPress!', 'custom_dashboard_widget');
@@ -50,7 +50,6 @@ add_action('admin_menu', 'disable_default_dashboard_widgets');
 /**
  * Remove any unnecessary admin menus & sub-menus
  */
-
 function remove_menus () {
 global $menu;
 	$restricted = array(__('Links'));
@@ -120,3 +119,33 @@ function my_remove_menu_elements()
 {
 	remove_submenu_page( 'themes.php', 'theme-editor.php' );
 }
+
+/**
+ * Remove any unwanted widgets...
+ *
+ *  @uses WP_Widget_Pages                   = Pages Widget
+ *  @uses WP_Widget_Calendar                = Calendar Widget
+ *  @uses WP_Widget_Archives                = Archives Widget
+ *  @uses WP_Widget_Links                   = Links Widget
+ *  @uses WP_Widget_Meta                    = Meta Widget
+ *  @uses WP_Widget_Search                  = Search Widget
+ *  @uses WP_Widget_Text                    = Text Widget
+ *  @uses WP_Widget_Categories              = Categories Widget
+ *  @uses WP_Widget_Recent_Posts            = Recent Posts Widget
+ *  @uses WP_Widget_Recent_Comments         = Recent Comments Widget
+ *  @uses WP_Widget_RSS                     = RSS Widget
+ *  @uses WP_Widget_Tag_Cloud               = Tag Cloud Widget
+ *  @uses WP_Nav_Menu_Widget                = Menus Widget
+ *
+ */
+add_action('admin_menu', 'remove_menus');
+
+function remove_some_wp_widgets(){
+  unregister_widget('WP_Widget_Meta');
+  unregister_widget('WP_Widget_Calendar');
+  unregister_widget('WP_Widget_Recent_Comments');
+}
+
+add_action('widgets_init','remove_some_wp_widgets', 1);
+
+?>

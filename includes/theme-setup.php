@@ -11,7 +11,7 @@ remove_action('wp_head', 'start_post_rel_link', 10, 0);
 remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 
-/** Tell WordPress to run themeName_setup() when the 'after_setup_theme' hook is run. */
+// Tell WordPress to run themeName_setup() when the 'after_setup_theme' hook is run.
 add_action( 'after_setup_theme', 'themeName_setup' );
 
 if ( ! function_exists( 'themeName_setup' ) ):
@@ -26,7 +26,6 @@ if ( ! function_exists( 'themeName_setup' ) ):
  * @uses register_default_headers() To register the default custom header images provided with the theme.
  * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
  *
- * @since themeName 1.0
  */
 function themeName_setup() {
 
@@ -169,11 +168,10 @@ function themeName_remove_gallery_css( $css ) {
 }
 add_filter( 'gallery_style', 'themeName_remove_gallery_css' );
 
-if ( ! function_exists( 'themeName_comment' ) ) :
 /**
  * Template for comments and pingbacks.
  */
-
+if ( ! function_exists( 'themeName_comment' ) ) :
 function themeName_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
@@ -218,33 +216,6 @@ function themeName_comment( $comment, $args, $depth ) {
 endif;
 
 /**
- * Remove any unwanted widgets...
- *
- * WP_Widget_Pages                   = Pages Widget
- * WP_Widget_Calendar                = Calendar Widget
- * WP_Widget_Archives                = Archives Widget
- * WP_Widget_Links                   = Links Widget
- * WP_Widget_Meta                    = Meta Widget
- * WP_Widget_Search                  = Search Widget
- * WP_Widget_Text                    = Text Widget
- * WP_Widget_Categories              = Categories Widget
- * WP_Widget_Recent_Posts            = Recent Posts Widget
- * WP_Widget_Recent_Comments         = Recent Comments Widget
- * WP_Widget_RSS                     = RSS Widget
- * WP_Widget_Tag_Cloud               = Tag Cloud Widget
- * WP_Nav_Menu_Widget                = Menus Widget
- */
-add_action('admin_menu', 'remove_menus');
-
-function remove_some_wp_widgets(){
-  unregister_widget('WP_Widget_Meta');
-  unregister_widget('WP_Widget_Calendar');
-  unregister_widget('WP_Widget_Recent_Comments');
-}
-
-add_action('widgets_init','remove_some_wp_widgets', 1);
-
-/**
  * Removes the default styles that are packaged with the Recent Comments widget.
  */
 function themeName_remove_recent_comments_style() {
@@ -253,10 +224,11 @@ function themeName_remove_recent_comments_style() {
 }
 add_action( 'widgets_init', 'themeName_remove_recent_comments_style' );
 
-if ( ! function_exists( 'themeName_posted_on' ) ) :
 /**
- * Prints HTML with meta information for the current post—date/time and author.
+ * Prints HTML with meta information for the current postdate/time and author.
  */
+if ( ! function_exists( 'themeName_posted_on' ) ) :
+
 function themeName_posted_on() {
 	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'themeName' ),
 		'meta-prep meta-prep-author',
@@ -274,10 +246,11 @@ function themeName_posted_on() {
 }
 endif;
 
-if ( ! function_exists( 'themeName_posted_in' ) ) :
 /**
  * Prints HTML with meta information for the current post (category, tags and permalink).
  */
+if ( ! function_exists( 'themeName_posted_in' ) ) :
+
 function themeName_posted_in() {
 	// Retrieves tag list of current post, separated by commas.
 	$tag_list = get_the_tag_list( '', ', ' );
@@ -299,13 +272,11 @@ function themeName_posted_in() {
 }
 endif;
 
-/* dimox breadcrumbs */ 
-
-// to add to any page add :
-//  if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); 
-
-
-function dimox_breadcrumbs() {
+/* 
+ * Custom Breadcrumbs
+ * To add to any page add: if (function_exists('custom_breadcrumbs')) custom_breadcrumbs(); 
+ */
+function custom_breadcrumbs() {
  
   $showOnHome = 0; // 1 - show breadcrumbs on the homepage, 0 - don't show
   $delimiter = '<img src=' . get_bloginfo('template_url') . '/images/delimiter.png />'; // delimiter between crumbs
@@ -409,8 +380,47 @@ function dimox_breadcrumbs() {
     echo '</div>';
  
   }
-} // end dimox_breadcrumbs()
+}
 
+/* 
+ * Custom Pagination
+ * To add to any page add: if (function_exists('custom_pagination')) custom_pagination(); 
+ */
+function custom_pagination($pages = '', $range = 2)
+{  
+     $showitems = ($range * 2)+1;  
 
+     global $paged;
+     if(empty($paged)) $paged = 1;
+
+     if($pages == '')
+     {
+         global $wp_query;
+         $pages = $wp_query->max_num_pages;
+         if(!$pages)
+         {
+             $pages = 1;
+         }
+     }   
+
+     if(1 != $pages)
+     {
+         echo "<div class='pagination'>";
+         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>&laquo;</a>";
+         if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>&lsaquo;</a>";
+
+         for ($i=1; $i <= $pages; $i++)
+         {
+             if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
+             {
+                 echo ($paged == $i)? "<span class='current'>".$i."</span>":"<a href='".get_pagenum_link($i)."' class='inactive' >".$i."</a>";
+             }
+         }
+
+         if ($paged < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($paged + 1)."'>&rsaquo;</a>";  
+         if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>&raquo;</a>";
+         echo "</div>\n";
+     }
+}
 
 ?>

@@ -340,26 +340,9 @@ marquee {
   outline: 5px solid #FFFF88;
 }
 
-/*********/
-/* EXTRA */
-/*********/
-
-/* Stuff that helps in developing / debugging, but don't quite fit anywhere
-   else.
-*/
-
-body > img:only-child {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAgMAAAAOFJJnAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAlQTFRF/+Pj2tra2dnZ4Z9gVgAAAHxJREFUGBkFwUGKxDAQBDB9shqcuw2T/3TAc5+A95UruZv+IoNqvEWCavLFDB2M5vPgGpyFNOcB80cPJMxgHhLkQ4IxuBorpDA3Y+MazEfC2+gwgnOxHnSogb15F1JcGxmkcBb1AwlVqCIHadZGwt+NGmQhD1lIuB+scOUfnCk3BP0u5SsAAAAASUVORK5CYII=);
-  border: 50px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  display: block;
-  margin: 1em auto;
-  padding: 0;
-}
-
-/*****************/
-/* NEW DEBUGGING */
-/*****************/
+/******************/
+/* MORE DEBUGGING */
+/******************/
 
 
 /* SHOW EMPTY LINKS 

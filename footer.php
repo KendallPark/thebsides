@@ -11,13 +11,10 @@
 ?>
 <footer>
 <?php
-	/* A sidebar in the footer? Yep. You can can customize
-	 * your footer with four columns of widgets.
-	 */
 	get_sidebar( 'footer' );
 ?>
 
-			<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 </footer>
 <?php
 	/* Always have wp_footer() just before the closing </body>
