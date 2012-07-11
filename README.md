@@ -1,6 +1,6 @@
 padawan
 =======
-<img src="https://github.com/integritystl/padawan/blob/master/images/wpvader.jpg" />
+<img src="/images/wpvader.jpg" />
 
 A padawan learner WordPress theme for anyone who wants to become a WordPress Jedi Theme Master.
 
