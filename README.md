@@ -1,7 +1,6 @@
 padawan
 =======
 ![Use the Force](/images/wpvader.jpg)
-Format: ![Use the Force](url)
 
 A padawan learner WordPress theme for anyone who wants to become a WordPress Jedi Theme Master.
 
