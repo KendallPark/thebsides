@@ -1,0 +1,6 @@
+<?php
+/**
+ * Register individual widgets
+ */
+
+?>
