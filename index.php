@@ -75,7 +75,7 @@ get_header();
 					endwhile; 
 
 						next_posts_link( __('&larr; Older Entries','padawan') );
-		            	previous_posts_link( __('Newer Entries &rarr;','padawan') ); 
+		 				previous_posts_link( __('Newer Entries &rarr;','padawan') ); 
 
 					endif; 
 			?>				
