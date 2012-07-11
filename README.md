@@ -1,49 +1,49 @@
 #Integrity WordPress Framework#
 =======
-![Integrity](http://integrityfb.com/logo.jpg)
+![Integrity](http://integrityfb.com/logo.png)
 
 <strong>This is the offical Integrity WordPress Theme Framework.</strong>
 
 ##Theme Framework Breakdown##
 
-*style.css
+* style.css
 Needs Description...
 
-*editor-style.css
+* editor-style.css
 Needs Description...
 
-*index.php
+* index.php
 Needs Description...
 
-*header.php
+* header.php
 Needs Description...
 
-*footer.php
+* footer.php
 Needs Description...
 
-*page.php
+* page.php
 Needs Description...
 
-*sidebar.php
+* sidebar.php
 Needs Description...
 
-*sidebar-footer.php
+* sidebar-footer.php
 Needs Description...
 
-*single.php
+* single.php
 Needs Description...
 
-*theme-options.php
+* theme-options.php
 Needs Description...
 
-*functions.php (includes)
-	*admin-setup.php
-	*register-sidebars.php
-	*register-widgets.php
-	*scripts.php
-	*shortcodes.php
-	*theme-setup.php
-	*user-settings.php
+* functions.php (includes)
+	* admin-setup.php
+	* register-sidebars.php
+	* register-widgets.php
+	* scripts.php
+	* shortcodes.php
+	* theme-setup.php
+	* user-settings.php
 
 All Need Descriptions...
 	
@@ -53,7 +53,7 @@ All Need Descriptions...
 
 ##Feature Requests##
 
-- Make footer stick to the bottom of the page (http://ryanfait.com/resources/footer-stick-to-bottom-of-page/)
+* Make footer stick to the bottom of the page (http://ryanfait.com/resources/footer-stick-to-bottom-of-page/)
 
 
 
