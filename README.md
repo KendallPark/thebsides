@@ -1,4 +1,4 @@
-![Integrity](http://integrityfb.com/logo.png) #WordPress Framework#
+![Integrity](http://integrityfb.com/logo.png) WordPress Framework
 =======
 
 <strong>This is the offical Integrity WordPress Theme Framework.</strong>
