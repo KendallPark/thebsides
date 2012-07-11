@@ -69,7 +69,7 @@ get_header();
 					<a class="blog-image" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'blog-image' ); ?></a> 
 			<?php } ?>
 					<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-		    <?php 
+			<?php 
 					the_excerpt(); 
 
 					endwhile; 
