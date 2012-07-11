@@ -2,7 +2,7 @@
 =======
 ![Use the force](http://integrityfb.com/wpvader.jpg)
 
-##This is a padawan learner WordPress theme for anyone who wants to become a WordPress Jedi Theme Master.##
+<strong>This is a padawan learner WordPress theme for anyone who wants to become a WordPress Jedi Theme Master.</strong>
 
 <strong>Concepts to learn:</strong>
 
@@ -13,8 +13,14 @@ Thinking about a theme from an object oriented perspective.
 ###Using custom post types and meta boxes###
 Basic set up and rationale behind using them to create a better more intuitive experience for the end user.
 
+<<<<<<< HEAD
 Customizing the WordPress Admin <br/>
 How to modify the default WordPress admin to decrease the learning curve for your clients/site admins
 =======
 ###Customizing the WordPress Admin###
 How to modify the default WordPress admin to decrease the learning curve for your clients/site admins.
+=======
+###Customizing the WordPress Admin###
+How to modify the default WordPress admin to decrease the learning curve for your clients/site admins.
+
+>>>>>>> Lets try that again…
