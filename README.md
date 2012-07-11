@@ -1,7 +1,7 @@
 padawan
 =======
-![Use the Force](https://github.com/integritystl/padawan/blob/master/images/wpvader.jpg)
-m
+<img src="https://github.com/integritystl/padawan/blob/master/images/wpvader.jpg" />
+
 A padawan learner WordPress theme for anyone who wants to become a WordPress Jedi Theme Master.
 
 <strong>Concepts to learn:</strong>
@@ -15,4 +15,3 @@ Basic set up and rationale behind using them to create a better more intuitive e
 
 Customizing the WordPress Admin <br/>
 How to modify the default WordPress admin to decrease the learning curve for your clients/site admins
-=======
