@@ -87,23 +87,15 @@ get_header();
 					/* Does the post have a thumbnail ? */
 					if ( has_post_thumbnail() ) { ?>
 					<a class="blog-image" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_post_thumbnail( 'blog-image' ); ?></a> 
-				<?php 
-					} 
+			<?php 
+				} 
 				
 				/* Now Print the title and the excerpt of the posts */
 				?>
 					<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                 <?php 
-					//if(is_search() || is_archive()) { 
-					//	the_excerpt(); 
-					//} else { 
-						the_excerpt(); 
-					//} 
-					
-					//if(is_single()) { 
-					//	wp_link_pages(); 
-                	//} 
-
+					the_excerpt(); 
+				
 				endwhile; 
 			
 			 		next_posts_link( __('&larr; Older Entries','padawan') );
