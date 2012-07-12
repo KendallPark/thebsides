@@ -19,7 +19,7 @@ if ( ! function_exists( 'padawan_setup' ) ):
  *
  * @uses add_theme_support() To add support for post thumbnails and automatic feed links.
  * @uses register_nav_menus() To add support for navigation menus.
- * @uses add_custom_background() To add support for a custom background.
+ * @uses add_theme_support(); To add support for a custom background.
  * @uses add_editor_style() To style the visual editor.
  * @uses load_theme_textdomain() For translation/localization support.
  * @uses add_custom_image_header() To add support for a custom header.
@@ -46,7 +46,7 @@ function padawan_setup() {
 	) );
 
 	// This theme allows users to set a custom background
-	add_custom_background();
+	add_theme_support( 'custom-background' );
 }
 endif;
 
@@ -214,15 +214,6 @@ function padawan_comment( $comment, $args, $depth ) {
 	endswitch;
 }
 endif;
-
-/**
- * Removes the default styles that are packaged with the Recent Comments widget.
- */
-function padawan_remove_recent_comments_style() {
-	global $wp_widget_factory;
-	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
-}
-add_action( 'widgets_init', 'padawan_remove_recent_comments_style' );
 
 /**
  * Prints HTML with meta information for the current postdate/time and author.
