@@ -17,7 +17,8 @@ get_header();
 				wp_reset_query(); 
 				
 				/* Print the search query */			
-				_e('Search results for','padawan');?> "<?php the_search_query() ?>" <?php
+				_e('Search results for','padawan');?> "<?php the_search_query() ?>" 
+		<?php
 
 			/* Was the query for a Tag? */ 
 			} else if(is_tag()) { 

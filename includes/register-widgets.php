@@ -3,6 +3,7 @@
  * Register individual widgets
  */
 
+// Add a customizable social media links widget!
 class SocialLinks extends WP_Widget {
 
     public function __construct() {
