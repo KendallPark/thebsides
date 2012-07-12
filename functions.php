@@ -3,7 +3,7 @@
  * Include custom functions
  *
  * @package WordPress
- * @subpackage #themeName
+ * @subpackage #padawan
  */
 
 // Always enqueue your javascript 
@@ -16,7 +16,13 @@ require_once('includes/admin-setup.php');
 require_once('includes/theme-setup.php');
 
 // Where all custom post types are registered
-require_once('includes/custom-post-types/sample-post-types.php');
+require_once('includes/custom-post-types/post-types.php');
+
+// Where all custom meta fields are registered
+require_once('includes/custom-meta-fields/meta-fields.php');
+
+// Where all custom taxonomies are registered
+require_once('includes/custom-taxonomies/taxonomy.php');
 
 // Where shortcodes are defined 
 require_once('includes/shortcodes.php');

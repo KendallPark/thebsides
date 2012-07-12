@@ -148,4 +148,45 @@ function remove_some_wp_widgets(){
 
 add_action('widgets_init','remove_some_wp_widgets', 1);
 
+/**
+ * Add a custom media types
+ */
+function modify_post_mime_types( $post_mime_types ) {  
+  
+    //these only show up if one is added 
+    //go to wp-includes/functions.php to see all media types 
+    
+    //applications
+    $post_mime_types['application/pdf'] = array( __( 'PDFs' ), __( 'Manage PDFs' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );  
+    
+    $post_mime_types['application/x-shockwave-flash'] = array( __( 'SWFs' ), __( 'Manage SWFs' ), _n_noop( 'SWF <span class="count">(%s)</span>', 'SWFs <span class="count">(%s)</span>' ) );
+    
+    $post_mime_types['application/msword'] = array( __( 'DOCs' ), __( 'Manage DOCs' ), _n_noop( 'DOCs <span class="count">(%s)</span>', 'DOCs <span class="count">(%s)</span>' ) );
+    
+    $post_mime_types['application/vnd.ms-excel'] = array( __( 'XLSs' ), __( 'Manage XLSs' ), _n_noop( 'XLSs <span class="count">(%s)</span>', 'XLSs <span class="count">(%s)</span>' ) );
+    
+    //video
+    $post_mime_types['video/quicktime'] = array( __( 'MOVs' ), __( 'Manage MOVs' ), _n_noop( 'MOVs <span class="count">(%s)</span>', 'MOVs <span class="count">(%s)</span>' ) ); 
+    
+    $post_mime_types['video/x-flv'] = array( __( 'FLVs' ), __( 'Manage FLVs Movies' ), _n_noop( 'FLVs <span class="count">(%s)</span>', 'FLVs <span class="count">(%s)</span>' ) );
+    
+    
+    $post_mime_types['video/avi'] = array( __( 'AVIs' ), __( 'Manage AVIs' ), _n_noop( 'AVIs <span class="count">(%s)</span>', 'AVIs <span class="count">(%s)</span>' ) ); 
+    
+    $post_mime_types['video/mpeg'] = array( __( 'MPEGs' ), __( 'Manage MPEGs' ), _n_noop( 'MPEGs <span class="count">(%s)</span>', 'MPEGs <span class="count">(%s)</span>' ) ); 
+    
+    //audio
+    $post_mime_types['audio/midi'] = array( __( 'MIDIs' ), __( 'Manage MIDIs' ), _n_noop( 'MIDIs <span class="count">(%s)</span>', 'MIDIs <span class="count">(%s)</span>' ) ); 
+    
+    $post_mime_types['audio/wma'] = array( __( 'WMAs' ), __( 'Manage WMAs' ), _n_noop( 'WMAs <span class="count">(%s)</span>', 'WMAs <span class="count">(%s)</span>' ) ); 
+    
+    $post_mime_types['audio/wav'] = array( __( 'WAVs' ), __( 'Manage WAVs' ), _n_noop( 'WAVs <span class="count">(%s)</span>', 'WAVs <span class="count">(%s)</span>' ) ); 
+    
+    $post_mime_types['audio/mpeg'] = array( __( 'MPEGs' ), __( 'Manage MPEGs' ), _n_noop( 'MPEGs <span class="count">(%s)</span>', 'MPEGs <span class="count">(%s)</span>' ) ); 
+
+    return $post_mime_types;  
+}  
+   
+add_filter( 'post_mime_types', 'modify_post_mime_types' );  
+
 ?>
