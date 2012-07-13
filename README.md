@@ -15,3 +15,9 @@ Basic set up and rationale behind using them to create a better more intuitive e
 
 ###Customizing the WordPress Admin###
 How to modify the default WordPress admin to decrease the learning curve for your clients/site admins.
+
+####BONUS####
+A sample custom taxonomy!
+
+###Feature Requests###
+If you find yourself hungry for more WordPress tutorials please let us know. We would love to get your feedback! If you have any troubles with the theme or have suggestions for impovments/additions, please feel free to contact us at dev-team@integritystl.com.
