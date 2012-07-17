@@ -34,6 +34,8 @@
 	
 ##Change Log##
 
+* 07-17-12 (AROD) Added sample some custom login page functions to remove default WP behaviours.
+
 * 07-12-12 (AROD) Added sample taxonmy and taxonmy page template.
 
 * 07-11-12 (AROD) Added this README.md file and moved non standard template files author.php, attachment.php, comments.php into an "extra-templates" folder where you can pull them if needed. If you don't need any of them just delete that folder before launching... Added a default favicon

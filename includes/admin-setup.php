@@ -1,15 +1,90 @@
 <?php
 
+/*
+// Hide Upgrade Notices...
+function hide_wp_update_nag() {
+	remove_action( 'admin_notices', 'update_nag', 3 );
+	add_filter( 'pre_site_transient_update_core', create_function( '$a', "return null;" ) );
+}
+add_action('admin_menu','hide_wp_update_nag');
+
+// Hide Upgrade Notices from admin bar...
+function disable_bar_updates() {  
+    global $wp_admin_bar;  
+    $wp_admin_bar->remove_menu('updates');  
+}  
+add_action( 'wp_before_admin_bar_render', 'disable_bar_updates' );
+
+// Hide Plugin Notices...
+function hide_plugin_update_indicator(){
+    global $menu,$submenu;
+    $menu[65][0] = 'Plugins';
+    $submenu['index.php'][10][0] = 'Updates';
+}
+add_action('admin_menu', 'hide_plugin_update_indicator');
+
+// Show admin bar only for admins
+if (!current_user_can('manage_options')) {
+	add_filter('show_admin_bar', '__return_false');
+}
+// show admin bar only for admins and editors
+if (!current_user_can('edit_posts')) {
+	add_filter('show_admin_bar', '__return_false');
+}
+*/
+
+// Remove Admin Bar from front-end for all users
+add_filter( 'show_admin_bar', '__return_false' );
+
+// Customize Admin toolbar if you do desiced to keep it around...
+function change_toolbar($wp_toolbar) {
+	//$wp_toolbar->remove_node('wp-logo');
+	$wp_toolbar->remove_node('comments');
+	$wp_toolbar->add_node(array(
+		'id' => 'myhelp',
+		'title' => 'Help',
+		'href' => 'http://integritystl.com/contact',
+		'meta' => array('target' => 'help')
+	));
+	$wp_toolbar->add_node(array(
+	'id' => 'mysupport',
+	'title' => 'Email Support',
+	'parent' => 'myhelp',
+	'href' => 'mailto:dev-team@integritystl.com?subject=Client%20Support%20Request'
+	));
+}
+add_action('admin_bar_menu', 'change_toolbar', 999);  
+
 /**
  * Load custom login logo to login page
  */
-function custom_login_logo() {
+function custom_login_styles() {
   echo '<style type="text/css">
-    h1 a { background-image:url('.get_bloginfo('template_directory').'/images/logo.png) !important; }
-    </style>';
+    		h1 a { background-image:url('.get_bloginfo('template_directory').'/images/logo.png) !important; }
+    		.login label { color: black; }
+    		.login form .input, .login input[type="text"], .login form { border: 1px solid black; }
+    		.login form .input:focus, .login input[type="text"]:focus { border: 1px solid orange; }
+    		.login #nav a, .login #backtoblog a { color: black !important; }
+    	</style>';
 }
 
-add_action('login_head', 'custom_login_logo');
+add_action('login_head', 'custom_login_styles');
+
+/**
+ * Changing the login page URL
+ */
+function my_login_logo_url() {
+ return get_bloginfo( 'url' );
+ }
+ add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+/**
+ * Changing the login page URL hover text
+ */
+function my_login_logo_url_title() {
+ return get_bloginfo( 'title' );
+ }
+ add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
 /**
  * Customize the admin footer
@@ -19,6 +94,56 @@ add_action('login_head', 'custom_login_logo');
 }
 
 add_filter('admin_footer_text', 'modify_footer_admin');
+
+/**
+ * Customize admin  WP logo
+ */
+add_action('admin_head', 'my_custom_logo');
+
+function my_custom_logo() {
+   echo '
+      <style type="text/css">
+        #wp-admin-bar-wp-logo > .ab-item .ab-icon { 
+        	background-image: url('.get_bloginfo('template_directory').'/images/wp-admin.png) !important; 
+        	background-position: 0 0;
+        	background-repeat: none;
+        }
+         #wp-admin-bar-wp-logo > .ab-item .ab-icon:hover, #wp-admin-bar-wp-logo > ab-item:hover { 
+        	background-image: url('.get_bloginfo('template_directory').'/images/wp-admin-hover.png) !important; 
+        	background-position: 0 0 !important;
+        	background-repeat: none !important;
+        }
+      </style>
+   ';
+}
+
+/**
+ * Change the "Howdy" Text in admin bar
+ */
+function wp_admin_bar_my_custom_account_menu( $wp_admin_bar ) {
+	$user_id = get_current_user_id();
+	$current_user = wp_get_current_user();
+	$profile_url = get_edit_profile_url( $user_id );
+
+	if ( 0 != $user_id ) {
+		/* Add the "My Account" menu */
+		$avatar = get_avatar( $user_id, 28 );
+		$howdy = sprintf( __('User Options - %1$s'), $current_user->display_name );
+		$class = empty( $avatar ) ? '' : 'with-avatar';
+
+		$wp_admin_bar->add_menu( array(
+			'id' => 'my-account',
+			'parent' => 'top-secondary',
+			'title' => $howdy . $avatar,
+			'href' => $profile_url,
+			'meta' => array(
+			'class' => $class,
+			),
+		) );
+	}
+}
+
+add_action( 'admin_bar_menu', 'wp_admin_bar_my_custom_account_menu', 11 );
 
 /**
  * Add a custom admin dashboard welcome widget
@@ -46,6 +171,23 @@ function disable_default_dashboard_widgets() {
 	remove_meta_box('dashboard_secondary', 'dashboard', 'core');
 }
 add_action('admin_menu', 'disable_default_dashboard_widgets');
+
+/*
+ * Sample function to hook into specific user roles - Useful to hide admin meues for specific user types...
+ *
+ *
+function customize_menus() {
+     //retrieve current user info
+     global $current_user;
+     get_currentuserinfo();
+
+     //if current user level is less than 3, remove the postcustom meta box
+     if ($current_user->user_level < 3) {
+          remove_meta_box('postcustom','post','normal');
+     }
+}
+add_action('admin_init','customize_menus');
+*/
 
 /**
  * Remove any unnecessary admin menus & sub-menus
@@ -76,14 +218,14 @@ function remove_submenus() {
   //unset($submenu['upload.php'][5]); // View the Media library
   //unset($submenu['upload.php'][10]); // Add to Media library
   //Links Menu
-  //unset($submenu['link-manager.php'][5]); // Link manager
-  //unset($submenu['link-manager.php'][10]); // Add new link
-  //unset($submenu['link-manager.php'][15]); // Link Categories
+  unset($submenu['link-manager.php'][5]); // Link manager
+  unset($submenu['link-manager.php'][10]); // Add new link
+  unset($submenu['link-manager.php'][15]); // Link Categories
   //Pages Menu
   //unset($submenu['edit.php?post_type=page'][5]); // The Pages listing
   //unset($submenu['edit.php?post_type=page'][10]); // Add New page
   //Appearance Menu
-  //unset($submenu['themes.php'][5]); // Removes 'Themes'
+  unset($submenu['themes.php'][5]); // Removes 'Themes'
   //unset($submenu['themes.php'][7]); // Widgets
   //unset($submenu['themes.php'][15]); // Removes Theme Installer tab
   //Plugins Menu
