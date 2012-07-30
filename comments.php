@@ -11,6 +11,9 @@
  * @subpackage #themeName
  */
 ?>
+<?php if(!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME'])) : ?>
+<?php die('BOOM goes the dynamite! The comments template cannot be accessed outside of an entry.'); ?>
+<?php endif; ?>
 
 <?php if ( post_password_required() ) : ?>
 		<p><?php _e( 'This post is password protected. Enter the password to view any comments.', 'themeName' ); ?></p>
