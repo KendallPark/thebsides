@@ -55,6 +55,24 @@ function change_toolbar($wp_toolbar) {
 }
 add_action('admin_bar_menu', 'change_toolbar', 999);  
 
+// Disable plugin deactiviation for a specific plugin...
+function integ_lock_plugins( $actions, $plugin_file, $plugin_data, $context ) {
+    // Remove edit link for all
+    if ( array_key_exists( 'edit', $actions ) )
+        unset( $actions['edit'] );
+    // Remove deactivate link for crucial plugins
+    if ( array_key_exists( 'deactivate', $actions ) && in_array( $plugin_file, array(
+        'slt-custom-fields/slt-custom-fields.php',
+        'slt-file-select/slt-file-select.php',
+        'slt-simple-events/slt-simple-events.php',
+        'slt-widgets/slt-widgets.php'
+    )))
+        unset( $actions['deactivate'] );
+    return $actions;
+}
+
+add_filter( 'plugin_action_links', 'integ_lock_plugins', 10, 4 );
+
 /**
  * Load custom login logo to login page
  */
@@ -194,7 +212,7 @@ add_action('admin_init','customize_menus');
  */
 function remove_menus () {
 global $menu;
-	$restricted = array(__('Links'));
+	$restricted = array(__('Links'), __('Comments'));
 	// Additional options - > __('Dashboard'), __('Pages'), , __('Comments'), __('Media')
 	end ($menu);
 	while (prev($menu)){
@@ -208,7 +226,7 @@ add_action('admin_menu', 'remove_menus');
 function remove_submenus() {
   global $submenu;
   //Dashboard menu
-  //unset($submenu['index.php'][10]); // Removes Updates
+  unset($submenu['index.php'][10]); // Removes Updates
   //Posts menu
   //unset($submenu['edit.php'][5]); // Leads to listing of available posts to edit
   //unset($submenu['edit.php'][10]); // Add new post
@@ -290,8 +308,37 @@ function remove_some_wp_widgets(){
 
 add_action('widgets_init','remove_some_wp_widgets', 1);
 
+// Remove Meta-Boxes from Posts & Pages Editor Screens
+/*
+function remove_extra_meta_boxes() {
+remove_meta_box( 'postcustom' , 'post' , 'normal' ); // custom fields for posts
+remove_meta_box( 'postcustom' , 'page' , 'normal' ); // custom fields for pages
+remove_meta_box( 'postexcerpt' , 'post' , 'normal' ); // post excerpts
+remove_meta_box( 'postexcerpt' , 'page' , 'normal' ); // page excerpts
+remove_meta_box( 'commentsdiv' , 'post' , 'normal' ); // recent comments for posts
+remove_meta_box( 'commentsdiv' , 'page' , 'normal' ); // recent comments for pages
+remove_meta_box( 'tagsdiv-post_tag' , 'post' , 'side' ); // post tags
+remove_meta_box( 'tagsdiv-post_tag' , 'page' , 'side' ); // page tags
+remove_meta_box( 'trackbacksdiv' , 'post' , 'normal' ); // post trackbacks
+remove_meta_box( 'trackbacksdiv' , 'page' , 'normal' ); // page trackbacks
+remove_meta_box( 'commentstatusdiv' , 'post' , 'normal' ); // allow comments for posts
+remove_meta_box( 'commentstatusdiv' , 'page' , 'normal' ); // allow comments for pages
+remove_meta_box('slugdiv','post','normal'); // post slug
+remove_meta_box('slugdiv','page','normal'); // page slug
+remove_meta_box('pageparentdiv','page','side'); // Page Parent
+}
+add_action( 'admin_menu' , 'remove_extra_meta_boxes' );
+*/
+
+//Remove Pages Columns
+function remove_pages_columns($defaults) {
+  unset($defaults['comments']); 
+  return $defaults;    
+} 
+add_filter('manage_pages_columns', 'remove_pages_columns');
+
 /**
- * Add a custom media types
+ * Add a custom media type filter for different media types in media library
  */
 function modify_post_mime_types( $post_mime_types ) {  
   
