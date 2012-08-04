@@ -1,0 +1,17 @@
+/*
+Theme Name: themeName
+Theme URI: http://integritystl.com
+Description: Welcome to the Integrity custom theme framework!
+Version: 1.0
+Author: Integrity Custom Web 
+Tags: Integrity
+*/
+/*
+ * Always use reset.css to reduce browser inconsistencies
+ */
+@import url('css/reset.css');
+/*
+ * Include this CSS file while developing to make sure you are always following CSS standards, 
+ * be sure to remove it when pushing to a production server.
+ */
+/*@import url('css/debugCSS.css');*/
