@@ -11,10 +11,10 @@ remove_action('wp_head', 'start_post_rel_link', 10, 0);
 remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 
-// Tell WordPress to run themeName_setup() when the 'after_setup_theme' hook is run.
-add_action( 'after_setup_theme', 'themeName_setup' );
+// Tell WordPress to run rezSTL_setup() when the 'after_setup_theme' hook is run.
+add_action( 'after_setup_theme', 'rezSTL_setup' );
 
-if ( ! function_exists( 'themeName_setup' ) ):
+if ( ! function_exists( 'rezSTL_setup' ) ):
 /**
  *
  * @uses add_theme_support() To add support for post thumbnails and automatic feed links.
@@ -27,7 +27,7 @@ if ( ! function_exists( 'themeName_setup' ) ):
  * @uses set_post_thumbnail_size() To set a custom post thumbnail size.
  *
  */
-function themeName_setup() {
+function rezSTL_setup() {
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
 	add_editor_style();
@@ -42,7 +42,7 @@ function themeName_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Navigation', 'themeName' ),
+		'primary' => __( 'Primary Navigation', 'rezSTL' ),
 	) );
 
 	// This theme allows users to set a custom background
@@ -50,7 +50,7 @@ function themeName_setup() {
 }
 endif;
 
-function themeName_filter_wp_title( $title, $separator ) {
+function rezSTL_filter_wp_title( $title, $separator ) {
 	// Don't affect wp_title() calls in feeds.
 	if ( is_feed() )
 		return $title;
@@ -62,10 +62,10 @@ function themeName_filter_wp_title( $title, $separator ) {
 
 	if ( is_search() ) {
 		// If we're a search, let's start over:
-		$title = sprintf( __( 'Search results for %s', 'themeName' ), '"' . get_search_query() . '"' );
+		$title = sprintf( __( 'Search results for %s', 'rezSTL' ), '"' . get_search_query() . '"' );
 		// Add a page number if we're on page 2 or more:
 		if ( $paged >= 2 )
-			$title .= " $separator " . sprintf( __( 'Page %s', 'themeName' ), $paged );
+			$title .= " $separator " . sprintf( __( 'Page %s', 'rezSTL' ), $paged );
 		// Add the site name to the end:
 		$title .= " $separator " . get_bloginfo( 'name', 'display' );
 		// We're done. Let's send the new title back to wp_title():
@@ -82,29 +82,29 @@ function themeName_filter_wp_title( $title, $separator ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $separator " . sprintf( __( 'Page %s', 'themeName' ), max( $paged, $page ) );
+		$title .= " $separator " . sprintf( __( 'Page %s', 'rezSTL' ), max( $paged, $page ) );
 
 	// Return the new title to wp_title():
 	return $title;
 }
-add_filter( 'wp_title', 'themeName_filter_wp_title', 10, 2 );
+add_filter( 'wp_title', 'rezSTL_filter_wp_title', 10, 2 );
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  */
-function themeName_page_menu_args( $args ) {
+function rezSTL_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'themeName_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'rezSTL_page_menu_args' );
 
 /**
  * Sets the post excerpt length to 40 characters.
  */
-function themeName_excerpt_length( $length ) {
+function rezSTL_excerpt_length( $length ) {
 	return 40;
 }
-add_filter( 'excerpt_length', 'themeName_excerpt_length' );
+add_filter( 'excerpt_length', 'rezSTL_excerpt_length' );
 
 /**
  * Return custom excerpt length
@@ -137,42 +137,42 @@ function reverse_strrchr($haystack, $needle, $trail) {
 /**
  * Returns a "Continue Reading" link for excerpts
  */
-function themeName_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'themeName' ) . '</a>';
+function rezSTL_continue_reading_link() {
+	return ' <a href="'. get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'rezSTL' ) . '</a>';
 }
 
 /**
- * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and themeName_continue_reading_link().
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and rezSTL_continue_reading_link().
  */
-function themeName_auto_excerpt_more( $more ) {
-	return ' &hellip;' . themeName_continue_reading_link();
+function rezSTL_auto_excerpt_more( $more ) {
+	return ' &hellip;' . rezSTL_continue_reading_link();
 }
-add_filter( 'excerpt_more', 'themeName_auto_excerpt_more' );
+add_filter( 'excerpt_more', 'rezSTL_auto_excerpt_more' );
 
 /**
  * Adds a pretty "Continue Reading" link to custom post excerpts.
  */
-function themeName_custom_excerpt_more( $output ) {
+function rezSTL_custom_excerpt_more( $output ) {
 	if ( has_excerpt() && ! is_attachment() ) {
-		$output .= themeName_continue_reading_link();
+		$output .= rezSTL_continue_reading_link();
 	}
 	return $output;
 }
-add_filter( 'get_the_excerpt', 'themeName_custom_excerpt_more' );
+add_filter( 'get_the_excerpt', 'rezSTL_custom_excerpt_more' );
 
 /**
  * Remove inline styles printed when the gallery shortcode is used.
  */
-function themeName_remove_gallery_css( $css ) {
+function rezSTL_remove_gallery_css( $css ) {
 	return preg_replace( "#<style type='text/css'>(.*?)</style>#s", '', $css );
 }
-add_filter( 'gallery_style', 'themeName_remove_gallery_css' );
+add_filter( 'gallery_style', 'rezSTL_remove_gallery_css' );
 
 /**
  * Template for comments and pingbacks.
  */
-if ( ! function_exists( 'themeName_comment' ) ) :
-function themeName_comment( $comment, $args, $depth ) {
+if ( ! function_exists( 'rezSTL_comment' ) ) :
+function rezSTL_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case '' :
@@ -181,17 +181,17 @@ function themeName_comment( $comment, $args, $depth ) {
 		<div id="comment-<?php comment_ID(); ?>">
 		<div class="comment-author vcard">
 			<?php echo get_avatar( $comment, 40 ); ?>
-			<?php printf( __( '%s <span class="says">says:</span>', 'themeName' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
+			<?php printf( __( '%s <span class="says">says:</span>', 'rezSTL' ), sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) ); ?>
 		</div><!-- .comment-author .vcard -->
 		<?php if ( $comment->comment_approved == '0' ) : ?>
-			<em><?php _e( 'Your comment is awaiting moderation.', 'themeName' ); ?></em>
+			<em><?php _e( 'Your comment is awaiting moderation.', 'rezSTL' ); ?></em>
 			<br />
 		<?php endif; ?>
 
 		<div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
 			<?php
 				/* translators: 1: date, 2: time */
-				printf( __( '%1$s at %2$s', 'themeName' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 'themeName' ), ' ' );
+				printf( __( '%1$s at %2$s', 'rezSTL' ), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)', 'rezSTL' ), ' ' );
 			?>
 		</div><!-- .comment-meta .commentmetadata -->
 
@@ -208,7 +208,7 @@ function themeName_comment( $comment, $args, $depth ) {
 		case 'trackback' :
 	?>
 	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'themeName' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'themeName'), ' ' ); ?></p>
+		<p><?php _e( 'Pingback:', 'rezSTL' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __('(Edit)', 'rezSTL'), ' ' ); ?></p>
 	<?php
 			break;
 	endswitch;
@@ -218,10 +218,10 @@ endif;
 /**
  * Prints HTML with meta information for the current postdate/time and author.
  */
-if ( ! function_exists( 'themeName_posted_on' ) ) :
+if ( ! function_exists( 'rezSTL_posted_on' ) ) :
 
-function themeName_posted_on() {
-	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'themeName' ),
+function rezSTL_posted_on() {
+	printf( __( '<span class="%1$s">Posted on</span> %2$s <span class="meta-sep">by</span> %3$s', 'rezSTL' ),
 		'meta-prep meta-prep-author',
 		sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><span class="entry-date">%3$s</span></a>',
 			get_permalink(),
@@ -230,7 +230,7 @@ function themeName_posted_on() {
 		),
 		sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 			get_author_posts_url( get_the_author_meta( 'ID' ) ),
-			sprintf( esc_attr__( 'View all posts by %s', 'themeName' ), get_the_author() ),
+			sprintf( esc_attr__( 'View all posts by %s', 'rezSTL' ), get_the_author() ),
 			get_the_author()
 		)
 	);
@@ -240,17 +240,17 @@ endif;
 /**
  * Prints HTML with meta information for the current post (category, tags and permalink).
  */
-if ( ! function_exists( 'themeName_posted_in' ) ) :
+if ( ! function_exists( 'rezSTL_posted_in' ) ) :
 
-function themeName_posted_in() {
+function rezSTL_posted_in() {
 	// Retrieves tag list of current post, separated by commas.
 	$tag_list = get_the_tag_list( '', ', ' );
 	if ( $tag_list ) {
-		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'themeName' );
+		$posted_in = __( 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'rezSTL' );
 	} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
-		$posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'themeName' );
+		$posted_in = __( 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'rezSTL' );
 	} else {
-		$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'themeName' );
+		$posted_in = __( 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'rezSTL' );
 	}
 	// Prints the string, replacing the placeholders.
 	printf(

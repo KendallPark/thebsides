@@ -3,7 +3,7 @@
  * The Sidebar containing the primary and secondary widget areas.
  *
  * @package WordPress
- * @subpackage #themeName
+ * @subpackage #rezSTL
  */
 ?>
 
@@ -21,7 +21,7 @@ if ( ! dynamic_sidebar( 'primary-widget-area' ) ) : ?>
 		<?php get_search_form(); ?>
 		</li>
 		<li>
-			<h3><?php _e( 'Archives', 'themeName' ); ?></h3>
+			<h3><?php _e( 'Archives', 'rezSTL' ); ?></h3>
 			<ul>
 				<?php wp_get_archives( 'type=monthly' ); ?>
 			</ul>

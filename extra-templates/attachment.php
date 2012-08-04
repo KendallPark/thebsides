@@ -3,31 +3,31 @@
  * The template for displaying attachments.
  *
  * @package WordPress
- * @subpackage themeName
+ * @subpackage rezSTL
  */
 
 get_header();
 
 if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-	<p><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php esc_attr( printf( __( 'Return to %s', 'themeName' ), get_the_title( $post->post_parent ) ) ); ?>" rel="gallery">
+	<p><a href="<?php echo get_permalink( $post->post_parent ); ?>" title="<?php esc_attr( printf( __( 'Return to %s', 'rezSTL' ), get_the_title( $post->post_parent ) ) ); ?>" rel="gallery">
 		<?php // translators: %s - title of parent post 
-			printf( __( '<span>&larr;</span> %s', 'themeName' ), get_the_title( $post->post_parent ) );
+			printf( __( '<span>&larr;</span> %s', 'rezSTL' ), get_the_title( $post->post_parent ) );
 		?>
 	</a></p>
 	<h2><?php the_title(); ?></h2>
 	<?php
-		printf(__('By %2$s', 'themeName'),
+		printf(__('By %2$s', 'rezSTL'),
 			'meta-prep meta-prep-author',
 			sprintf( '<a class="url fn n" href="%1$s" title="%2$s">%3$s</a>',
 				get_author_posts_url( get_the_author_meta( 'ID' ) ),
-				sprintf( esc_attr__( 'View all posts by %s', 'themeName' ), get_the_author() ),
+				sprintf( esc_attr__( 'View all posts by %s', 'rezSTL' ), get_the_author() ),
 				get_the_author()
 				)
 		);
 	?>
 	<span>|</span>
 	<?php
-		printf( __('Published %2$s', 'themeName'),
+		printf( __('Published %2$s', 'rezSTL'),
 			'meta-prep meta-prep-entry-date',
 			sprintf( '<abbr title="%1$s">%2$s</abbr>',
 				esc_attr( get_the_time() ),
@@ -37,16 +37,16 @@ if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 		if ( wp_attachment_is_image() ) {
 			echo ' | ';
 			$metadata = wp_get_attachment_metadata();
-			printf( __( 'Full size is %s pixels', 'themeName'),
+			printf( __( 'Full size is %s pixels', 'rezSTL'),
 				sprintf( '<a href="%1$s" title="%2$s">%3$s &times; %4$s</a>',
 				wp_get_attachment_url(),
-				esc_attr( __('Link to full-size image', 'themeName') ),
+				esc_attr( __('Link to full-size image', 'rezSTL') ),
 				$metadata['width'],
 				$metadata['height']
 				)
 			);
 		}
-	edit_post_link( __( 'Edit', 'themeName' ), '', '' ); 
+	edit_post_link( __( 'Edit', 'rezSTL' ), '', '' ); 
 	if ( wp_attachment_is_image() ) :
 		$attachments = array_values( get_children( array( 'post_parent' => $post->post_parent, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID' ) ) );
 		foreach ( $attachments as $k => $attachment ) {
@@ -69,7 +69,7 @@ if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 	?>
 	<p><a href="<?php echo $next_attachment_url; ?>" title="<?php echo esc_attr( get_the_title() ); ?>" rel="attachment">
 		<?php
-			$attachment_size = apply_filters( 'themeName_attachment_size', 900 );
+			$attachment_size = apply_filters( 'rezSTL_attachment_size', 900 );
 			echo wp_get_attachment_image( $post->ID, array( $attachment_size, 9999 ) ); // filterable image width with, essentially, no limit for image height.
 		?>
 	</a></p>
@@ -79,10 +79,10 @@ if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 	<a href="<?php echo wp_get_attachment_url(); ?>" title="<?php echo esc_attr( get_the_title() ); ?>" rel="attachment"><?php echo basename( get_permalink() ); ?></a>
 <?php endif; ?>
 <?php if ( !empty( $post->post_excerpt ) ) the_excerpt();
-	the_content( __( 'Continue reading &rarr;', 'themeName' ) );
-	wp_link_pages( array( 'before' => '' . __( 'Pages:', 'themeName' ), 'after' => '' ) );
-		themeName_posted_in();
-		edit_post_link( __( 'Edit', 'themeName' ), ' ', '' ); 
+	the_content( __( 'Continue reading &rarr;', 'rezSTL' ) );
+	wp_link_pages( array( 'before' => '' . __( 'Pages:', 'rezSTL' ), 'after' => '' ) );
+		rezSTL_posted_in();
+		edit_post_link( __( 'Edit', 'rezSTL' ), ' ', '' ); 
 		comments_template(); 
 endwhile; 
 

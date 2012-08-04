@@ -95,7 +95,7 @@ $args['share_icons']['linked_in'] = array(
 //$args['show_import_export'] = false;
 
 //Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores
-$args['opt_name'] = 'themeName';
+$args['opt_name'] = 'rezSTL';
 
 //Custom menu icon
 //$args['menu_icon'] = '';

@@ -3,7 +3,7 @@
  * The template for displaying all pages.
  *
  * @package WordPress
- * @subpackage #themeName
+ * @subpackage #rezSTL
  */
 
 get_header(); ?>
@@ -17,8 +17,8 @@ get_header(); ?>
 	<?php } ?>				
 
 	<?php the_content(); ?>
-	<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'themeName' ), 'after' => '' ) ); ?>
-	<?php edit_post_link( __( 'Edit', 'themeName' ), '', '' ); ?>
+	<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'rezSTL' ), 'after' => '' ) ); ?>
+	<?php edit_post_link( __( 'Edit', 'rezSTL' ), '', '' ); ?>
 
 	<?php comments_template( '', true ); ?>
 

@@ -3,7 +3,7 @@
  * The template for displaying Author Archive pages.
  *
  * @package WordPress
- * @subpackage themeName
+ * @subpackage rezSTL
  */
 
 get_header();
@@ -25,12 +25,12 @@ $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : g
 ?>
 
 
-<h1><?php printf( __( 'Author Archives: %s', 'themeName' ), "<a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a>" ); ?></h1>
+<h1><?php printf( __( 'Author Archives: %s', 'rezSTL' ), "<a class='url fn n' href='" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "' title='" . esc_attr( get_the_author() ) . "' rel='me'>" . get_the_author() . "</a>" ); ?></h1>
 <?php
 	// If a user has filled out their description and social profiles info, if so, show a bio and links their respective social media accounts...
 	if ( get_the_author_meta( 'description' ) ) : 
-		echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'themeName_author_bio_avatar_size', 60 ) ); ?>
-		<h2><?php printf( __( 'About %s', 'themeName' ), get_the_author() ); ?></h2>
+		echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'rezSTL_author_bio_avatar_size', 60 ) ); ?>
+		<h2><?php printf( __( 'About %s', 'rezSTL' ), get_the_author() ); ?></h2>
 		<?php the_author_meta( 'description' ); ?>
 
 	<?php endif; 

@@ -3,7 +3,7 @@
  * Include custom functions
  *
  * @package WordPress
- * @subpackage #themeName
+ * @subpackage #rezSTL
  */
 
 require_once('includes/scripts.php');
