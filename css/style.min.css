@@ -1,8 +1,0 @@
-/*
- * COMPRESSED CSS
- *
- * Prior to launching a live site - always be sure to compress as much of your code as possible.
- * Use the .min convention to store your conpressed CSS (and JS) file and .max for an uncompress version
- * Upon launch you can either @import (which sligtly reduces performance) your .min into the main style.css or (recommended) copy and paste your compressed styles into the main style.css and delete this file.
- *
- */
