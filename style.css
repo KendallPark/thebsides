@@ -19,6 +19,4 @@ Author: Integrity STL
  */
 /*@import url('css/debugCSS.css');*/
 
-/*
- * Create your styles in css/style.max.css then minify it and paste it below
- */
+@import "css/bootstrap.css";
