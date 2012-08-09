@@ -1,0 +1,24 @@
+/*
+Theme Name: Padawan
+Theme URI: http://integritystl.com
+Description: This is a padawan learner WordPress theme for anyone who wants to become a WordPress Jedi Theme Master. By playing around with this theme you will learn to harness the power of the force. Specifically... How to abstract custom functions out of the main theme files for ease in maintenance, enhancement, and readability. The basic set up and rationale behind using custom post types and meta boxes to create a better more intuitive experience for the end user. How to modify the default WordPress admin to decrease the learning curve for your clients/site admins. May the force be with you!
+Version: 1.0
+Author: Integrity STL
+*/
+
+/*
+ * Always use a reset.css to reduce browser inconsistencies. 
+ * Remember to always remove any @imports upon launching a new site!
+ */
+@import "css/reset.css";
+@import "css/style.max.css";
+
+/*
+ * Include this CSS file while developing to make sure you are always following CSS standards, 
+ * be sure to remove it when pushing to a production server.
+ */
+/*@import url('css/debugCSS.css');*/
+
+/*
+ * Create your styles in css/style.max.css then minify it and paste it below
+ */
