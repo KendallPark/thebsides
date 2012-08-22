@@ -11,6 +11,9 @@
 ?>
 <footer>
 <div id="footer-container">
+	<div class="stripe red"></div>
+	<div class="stripe green"> </div>
+	<div class="stripe cyan"></div>
 	<div class="container">
 	<?php
 		get_sidebar( 'footer' );

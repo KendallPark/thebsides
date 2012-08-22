@@ -8,6 +8,7 @@
 get_header(); 	
 ?>
 
+<div id="content-container">
 <div class="container">
 
 	<h2>
@@ -87,4 +88,5 @@ get_header();
 <?php get_sidebar(); ?>
 
 </div> <!-- .container -->
+</div> <!-- #content-container -->
 <?php get_footer(); ?>	

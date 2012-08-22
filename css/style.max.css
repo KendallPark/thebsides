@@ -6,12 +6,30 @@
  * Upon launch you can either @import (which sligtly reduces performance) your .min into the main style.css or (recommended) copy and paste your compressed styles into the main style.css and delete this file.
  *
  */
+/* Random */
+.stripe {
+  height: 3px;
+  opacity: .5;
+}
+.red {
+  background-color: #ff013d;
+}
+.green {
+  background-color: #33ff02;
+}
+.cyan {
+  background-color: #00a5ff;
+}
 /* Header Styles */
 #header-container {
-  background-color: #555555;
+  background-color: #222222;
+  margin: 30px 0 20px 0;
+}
+/* Main Content Styles */#content-container {
+  background-color: #333333;
 }
 /* Footer Styles */
 #footer-container {
-  background-color: #333333;
+  background-color: #222222;
   height: 300px;
 }
