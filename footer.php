@@ -10,11 +10,15 @@
  */
 ?>
 <footer>
-<?php
-	get_sidebar( 'footer' );
-?>
-
-<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+<div id="footer-container">
+	<div class="container">
+	<?php
+		get_sidebar( 'footer' );
+	?>
+	
+	<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+	</div> <!-- .container -->
+</div> <!-- #footer-container -->
 </footer>
 <?php
 	/* Always have wp_footer() just before the closing </body>

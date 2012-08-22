@@ -39,19 +39,29 @@
 <body id="<?php echo basename(get_permalink()); ?>" <?php body_class(); ?>>
 
 	<header>
-
-		<h1>
-			<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-		</h1>
+	<div id="header-container">
+	<div class="container">
+		<div class="row">
+			<div class="span4">
 		
-		<p><?php bloginfo( 'description' ); ?></p>
-
-		<div id="access">
-	  		<!--Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff -->
-			<a id="skip" href="#content" title="<?php esc_attr_e( 'Skip to content', 'padawan' ); ?>"><?php _e( 'Skip to content', 'padawan' ); ?></a>
-			<!-- Sets primary navigation and use wp_page_menu as a fall back -->
-			<nav role="navigation"><?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?></nav>
-
-		</div><!-- #access -->
-
+				<h1>
+					<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				</h1>
+				
+				<p><?php bloginfo( 'description' ); ?></p>
+			</div> <!-- .span4 -->
+			
+			<div class="span6">
+				<div id="access">
+			  		<!--Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff -->
+					<a id="skip" href="#content" title="<?php esc_attr_e( 'Skip to content', 'padawan' ); ?>"><?php _e( 'Skip to content', 'padawan' ); ?></a>
+					<!-- Sets primary navigation and use wp_page_menu as a fall back -->
+					<nav role="navigation"><?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?></nav>
+				</div><!-- #access -->
+			</div> <!-- .span6 -->
+	
+		
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+	</div> <!-- #header-container -->
 	</header>

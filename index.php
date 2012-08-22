@@ -8,6 +8,8 @@
 get_header(); 	
 ?>
 
+<div class="container">
+
 	<h2>
 		<?php	
 			if(is_search()) { 
@@ -83,4 +85,6 @@ get_header();
 		</section>
 
 <?php get_sidebar(); ?>
+
+</div> <!-- .container -->
 <?php get_footer(); ?>	

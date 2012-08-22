@@ -6,3 +6,12 @@
  * Upon launch you can either @import (which sligtly reduces performance) your .min into the main style.css or (recommended) copy and paste your compressed styles into the main style.css and delete this file.
  *
  */
+/* Header Styles */
+#header-container {
+  background-color: #555555;
+}
+/* Footer Styles */
+#footer-container {
+  background-color: #333333;
+  height: 300px;
+}

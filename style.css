@@ -11,6 +11,7 @@ Author: Integrity STL
  * Remember to always remove any @imports upon launching a new site!
  */
 @import "css/reset.css";
+@import "css/bootstrap.css";
 @import "css/style.max.css";
 
 /*
@@ -19,4 +20,3 @@ Author: Integrity STL
  */
 /*@import url('css/debugCSS.css');*/
 
-@import "css/bootstrap.css";
