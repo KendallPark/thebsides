@@ -229,8 +229,8 @@
 }
 
 // Active nav items
-.navbar .nav .active > a,
-.navbar .nav .active > a:hover {
+.navbar .nav .current_page_item > a,
+.navbar .nav .current_page_item > a:hover {
   color: @navbarLinkColorActive;
   text-decoration: none;
   background-color: @navbarLinkBackgroundActive;
@@ -325,19 +325,19 @@
   border-top-color: @white;
   border-bottom-color: @white;
 }
-.navbar .nav li.dropdown.active .caret {
+.navbar .nav li.dropdown.current_page_item .caret {
   .opacity(100);
 }
 
 // Remove background color from open dropdown
 .navbar .nav li.dropdown.open > .dropdown-toggle,
-.navbar .nav li.dropdown.active > .dropdown-toggle,
-.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+.navbar .nav li.dropdown.current_page_item > .dropdown-toggle,
+.navbar .nav li.dropdown.open.current_page_item > .dropdown-toggle {
   background-color: transparent;
 }
 
 // Dropdown link on hover
-.navbar .nav li.dropdown.active > .dropdown-toggle:hover {
+.navbar .nav li.dropdown.current_page_item > .dropdown-toggle:hover {
   color: @white;
 }
 

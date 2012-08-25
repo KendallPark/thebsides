@@ -14,6 +14,7 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="stylesheet" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<link rel="shortcut icon" href="<?php bloginfo('template_directory')?>/favicon.ico">
+	<link href='http://fonts.googleapis.com/css?family=Lato|Revalia' rel='stylesheet' type='text/css'>
 <!--[if IE]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -43,31 +44,29 @@
 	
 		<div class="container">
 			<div class="row">
-				<div class="span4">
+				<div class="span5">
 			
-					<h1>
+					<h1 id="title">
 						<a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 					</h1>
 					
-					<p><?php bloginfo( 'description' ); ?></p>
+					<p id="titleline"><?php bloginfo( 'description' ); ?></p>
 				</div> <!-- .span4 -->
 				
-				<div class="span5 offset3">
+				<div class="span7">
 						<!-- Sets primary navigation and use wp_page_menu as a fall back -->
 						<nav role="navigation">
-						<div class="navbar">
-							<div class="navbar-inner">
+						<div id="main-nav">
 								<?php
 								wp_nav_menu(
 									array (
 										'theme_location' => 'primary',
 										'container_class' => 'menu-header',
-										'items_wrap' => '<ul id="%1$s" class="%2$s nav">%3$s</ul>',
+										'items_wrap' => '<ul id="%1$s" class="%2$s nav nav-pills">%3$s</ul>',
 										)
 									);
 								?>	
 							
-							</div> <!-- .navbar-inner -->
 						</div> <!-- .navbar -->
 						</nav>
 				</div> <!-- .span6 -->
@@ -76,7 +75,4 @@
 			</div> <!-- .row -->
 		</div> <!-- .container -->
 	</div> <!-- #header-container -->
-	<div class="stripe red"></div>
-	<div class="stripe green"> </div>
-	<div class="stripe cyan"></div>
 	</header>

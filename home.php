@@ -8,12 +8,13 @@ get_header(); ?>
 <div class="container">
 	<div class="row">
 		<div class="span9">
-	
+			<div class="wysiwyg">
 			<section>
+				
 				<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 		
 				<?php if ( is_front_page() ) { ?>
-					<h2><?php the_title(); ?></h2>
+					<h1><?php the_title(); ?></h1>
 				<?php } else { ?>	
 					<h1><?php the_title(); ?></h1>
 				<?php } ?>				
@@ -24,6 +25,8 @@ get_header(); ?>
 							
 				<?php endwhile; ?>
 			</section>
+			</div> <!--.wysiwyg-->
+
 		</div> <!-- .span9 -->
 		<div class="span3">
 			<?php get_sidebar(); ?>

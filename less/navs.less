@@ -18,7 +18,8 @@
 }
 .nav > li > a:hover {
   text-decoration: none;
-  background-color: @grayLighter;
+  background-color: @linkColor;
+  color: @white;
 }
 
 // Redeclare pull classes because of specifity
@@ -60,8 +61,8 @@
 .nav-list > li > a {
   padding: 3px 15px;
 }
-.nav-list > .active > a,
-.nav-list > .active > a:hover {
+.nav-list > .current_page_item > a,
+.nav-list > .current_page_item > a:hover {
   color: @white;
   text-shadow: 0 -1px 0 rgba(0,0,0,.2);
   background-color: @linkColor;
@@ -119,8 +120,8 @@
   }
 }
 // Active state, and it's :hover to override normal :hover
-.nav-tabs > .active > a,
-.nav-tabs > .active > a:hover {
+.nav-tabs > .current_page_item > a,
+.nav-tabs > .current_page_item > a:hover {
   color: @gray;
   background-color: @white;
   border: 1px solid #ddd;
@@ -142,10 +143,10 @@
 }
 
 // Active state
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover {
-  color: @white;
-  background-color: @linkColor;
+.nav-pills > .current_page_item > a,
+.nav-pills > .current_page_item > a:hover {
+  color: @grayDarker;
+  background-color: @linkColorHover;
 }
 
 
@@ -217,15 +218,15 @@
 
 // Active dropdown links
 // -------------------------
-.nav-tabs .active .dropdown-toggle .caret,
-.nav-pills .active .dropdown-toggle .caret {
+.nav-tabs .current_page_item .dropdown-toggle .caret,
+.nav-pills .current_page_item .dropdown-toggle .caret {
   border-top-color: @grayDark;
   border-bottom-color: @grayDark;
 }
 
 // Active:hover dropdown links
 // -------------------------
-.nav > .dropdown.active > a:hover {
+.nav > .dropdown.current_page_item > a:hover {
   color: @black;
   cursor: pointer;
 }
@@ -234,13 +235,13 @@
 // -------------------------
 .nav-tabs .open .dropdown-toggle,
 .nav-pills .open .dropdown-toggle,
-.nav > li.dropdown.open.active > a:hover {
+.nav > li.dropdown.open.current_page_item > a:hover {
   color: @white;
   background-color: @grayLight;
   border-color: @grayLight;
 }
 .nav li.dropdown.open .caret,
-.nav li.dropdown.open.active .caret,
+.nav li.dropdown.open.current_page_item .caret,
 .nav li.dropdown.open a:hover .caret {
   border-top-color: @white;
   border-bottom-color: @white;
@@ -281,8 +282,8 @@
 .pill-content > .pill-pane {
   display: none;
 }
-.tab-content > .active,
-.pill-content > .active {
+.tab-content > .current_page_item,
+.pill-content > .current_page_item {
   display: block;
 }
 
@@ -304,8 +305,8 @@
     border-top-color: #ddd;
   }
 }
-.tabs-below > .nav-tabs > .active > a,
-.tabs-below > .nav-tabs > .active > a:hover {
+.tabs-below > .nav-tabs > .current_page_item > a,
+.tabs-below > .nav-tabs > .current_page_item > a:hover {
   border-color: transparent #ddd #ddd #ddd;
 }
 
@@ -337,8 +338,8 @@
 .tabs-left > .nav-tabs > li > a:hover {
   border-color: @grayLighter #ddd @grayLighter @grayLighter;
 }
-.tabs-left > .nav-tabs .active > a,
-.tabs-left > .nav-tabs .active > a:hover {
+.tabs-left > .nav-tabs .current_page_item > a,
+.tabs-left > .nav-tabs .current_page_item > a:hover {
   border-color: #ddd transparent #ddd #ddd;
   *border-right-color: @white;
 }
@@ -356,8 +357,8 @@
 .tabs-right > .nav-tabs > li > a:hover {
   border-color: @grayLighter @grayLighter @grayLighter #ddd;
 }
-.tabs-right > .nav-tabs .active > a,
-.tabs-right > .nav-tabs .active > a:hover {
+.tabs-right > .nav-tabs .current_page_item > a,
+.tabs-right > .nav-tabs .current_page_item > a:hover {
   border-color: #ddd #ddd #ddd transparent;
   *border-left-color: @white;
 }

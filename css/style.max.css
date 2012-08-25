@@ -6,30 +6,41 @@
  * Upon launch you can either @import (which sligtly reduces performance) your .min into the main style.css or (recommended) copy and paste your compressed styles into the main style.css and delete this file.
  *
  */
-/* Random */
-.stripe {
-  height: 3px;
-  opacity: .5;
-}
-.red {
-  background-color: #ff013d;
-}
-.green {
-  background-color: #33ff02;
-}
-.cyan {
-  background-color: #00a5ff;
+/* Page Styles */
+.wysiwyg h1 {
+  border-bottom: solid #ff013d 2px;
+  border-bottom: solid #FF013D 2px;
+  color: #ff013d;
+  margin: 0 0 7px 0;
+  padding: 0 0 2px 0;
 }
 /* Header Styles */
+#title {
+  font-size: 48px;
+  font-family: 'Revalia';
+  margin: 0 0 0 -12px;
+}
+#titleline {
+  font-size: 13px;
+  margin: 10px 0 8px 1px;
+}
 #header-container {
   background-color: #222222;
-  margin: 30px 0 20px 0;
+  margin: 16px 0 0 0;
+  border-bottom: #ff013d solid 2px;
+}
+/* Main Nav */
+#main-nav {
+  margin: 8px 0 0 0;
+  font-size: 14px;
 }
 /* Main Content Styles */#content-container {
-  background-color: #333333;
+  background-color: #303030;
+  padding: 0px 0 20px 0;
 }
 /* Footer Styles */
 #footer-container {
   background-color: #222222;
   height: 300px;
+  border-top: #33ff02 solid 2px;
 }

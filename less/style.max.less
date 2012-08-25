@@ -11,7 +11,7 @@
 // -------------------------
 @black:                 #000;
 @grayDarker:            #222;
-@grayDark:              #333;
+@grayDark:              #303030;
 @gray:                  #555;
 @grayLight:             #999;
 @grayLighter:           #eee;
@@ -33,38 +33,51 @@
 @tapegreen:				#33FF02;
 @tapecyan:				#00A5FF;
 
-/* Random */
-.stripe {
-	height: 3px;
-	opacity: .5;
-}
-
-.red {
-	background-color: @tapered;
-}
-	.green {
-	background-color: @tapegreen;
-}
-	.cyan {
-	background-color: @tapecyan;
+/* Page Styles */
+.wysiwyg h1 {
+	border-bottom: solid @tapered 2px;
+	border-bottom: solid #FF013D 2px;
+	color: @tapered;
+	margin: 0 0 7px 0;
+	padding: 0 0 2px 0;
 }
 
 
 /* Header Styles */
+
+#title {
+	font-size: 48px;
+	font-family: 'Revalia';
+	margin: 0 0 0 -12px;
+}
+
+#titleline {
+	font-size: 13px;
+	margin: 10px 0 8px 1px;
+}
  
 #header-container {
 	background-color: @grayDarker;
-	margin: 30px 0 20px 0;
+	margin: 16px 0 0 0;
+	border-bottom: @tapered solid 2px;
+}
+
+/* Main Nav */
+#main-nav {
+	margin: 8px 0 0 0;
+	font-size: 14px;
 }
 
 /* Main Content Styles */ 
 
 #content-container {
 	background-color: @grayDark;
+	padding: 0px 0 20px 0;
 }
 
 /* Footer Styles */
 #footer-container {
 	background-color: @grayDarker;
 	height: 300px;
+	border-top: @tapegreen solid 2px;
 }
