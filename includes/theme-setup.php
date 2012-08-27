@@ -43,6 +43,8 @@ function padawan_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => __( 'Primary Navigation', 'padawan' ),
+		'resources' => __( 'Resources Subnavigation', 'padawan' ),
+		'us' => __( 'Us Subnavigation', 'padawan' ),
 	) );
 
 	// This theme allows users to set a custom background

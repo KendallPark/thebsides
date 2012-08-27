@@ -68,6 +68,23 @@
 								?>	
 							
 						</div> <!-- .navbar -->
+						<div id="secondary-nav">
+							<?php 
+								if (is_page("Resources")) {
+									wp_nav_menu(
+										array ('theme_location' => 'resources',
+											'container_class' => 'menu-header',
+										)
+									);
+								} else if (is_page("Us")) {
+									wp_nav_menu(
+										array ('theme_location' => 'resources',
+											'container_class' => 'menu-header',
+										)
+									);
+								}
+							?>
+						</div> <!-- #secondardy-nav-->
 						</nav>
 				</div> <!-- .span6 -->
 		
