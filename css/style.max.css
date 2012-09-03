@@ -8,9 +8,9 @@
  */
 /* Page Styles */
 .wysiwyg h1 {
-  border-bottom: solid #ff013d 2px;
-  border-bottom: solid #FF013D 2px;
-  color: #ff013d;
+  border-bottom: solid #bbbbbb 2px;
+  border-bottom: solid #bbbbbb 2px;
+  color: #bbbbbb;
   margin: 0 0 7px 0;
   padding: 0 0 2px 0;
 }
@@ -25,9 +25,9 @@
   margin: 10px 0 8px 1px;
 }
 #header-container {
-  background-color: #222222;
+  background-color: #232022;
   margin: 16px 0 0 0;
-  border-bottom: #ff013d solid 2px;
+  border-bottom: #bbbbbb solid 2px;
 }
 /* Main Nav */
 #main-nav {
@@ -39,21 +39,26 @@
   padding: 0;
 }
 #secondary-nav ul {
+  font-size: 14px;
   list-style-type: none;
-  margin: 0 0 0 30px;
+  margin: 0 0 0 50px;
   padding: 0;
+  font-variant: small-caps;
 }
 #secondary-nav ul li {
-  display: inline;
+  display: inline-block;
   padding: 0 10px 0 0;
 }
+#secondary-nav .current-menu-item a {
+  color: #eeeeee;
+}
 /* Main Content Styles */#content-container {
-  background-color: #303030;
+  background-color: #343136;
   padding: 0px 0 20px 0;
 }
 /* Footer Styles */
 #footer-container {
-  background-color: #222222;
+  background-color: #232022;
   height: 300px;
-  border-top: #33ff02 solid 2px;
+  border-top: #bbbbbb solid 2px;
 }

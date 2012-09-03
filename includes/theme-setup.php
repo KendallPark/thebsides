@@ -416,4 +416,31 @@ function custom_pagination($pages = '', $range = 2)
      }
 }
 
+// Check if page is direct child
+function is_child($page_id) { 
+    global $post; 
+    if( is_page() && ($post->post_parent == $page_id) ) {
+       return true;
+    } else { 
+       return false; 
+    }
+}
+
+// Check if page is an ancestor
+function is_ancestor($post_id) {
+    global $wp_query;
+    $ancestors = $wp_query->post->ancestors;
+    if ( in_array($post_id, $ancestors) ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function get_ID_by_page_name($page_name) {
+   global $wpdb;
+   $page_name_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$page_name."' AND post_type = 'page'");
+   return $page_name_id;
+}
+
 ?>

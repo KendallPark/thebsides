@@ -19,7 +19,7 @@
 .nav > li > a:hover {
   text-decoration: none;
   background-color: @linkColor;
-  color: @white;
+  color: @grayDarker;
 }
 
 // Redeclare pull classes because of specifity
@@ -63,6 +63,12 @@
 }
 .nav-list > .current_page_item > a,
 .nav-list > .current_page_item > a:hover {
+  color: @white;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  background-color: @linkColor;
+}
+.nav-list > .current-page-ancestor > a,
+.nav-list > .current-page-ancestor > a:hover {
   color: @white;
   text-shadow: 0 -1px 0 rgba(0,0,0,.2);
   background-color: @linkColor;
@@ -148,7 +154,11 @@
   color: @grayDarker;
   background-color: @linkColorHover;
 }
-
+.nav-pills > .current-page-ancestor > a,
+.nav-pills > .current-page-ancestor > a:hover {
+  color: @grayDarker;
+  background-color: @linkColorHover;
+}
 
 
 // STACKED NAV

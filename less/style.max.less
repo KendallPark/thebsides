@@ -6,38 +6,14 @@
  * Upon launch you can either @import (which sligtly reduces performance) your .min into the main style.css or (recommended) copy and paste your compressed styles into the main style.css and delete this file.
  *
  */
- 
-// Grays
-// -------------------------
-@black:                 #000;
-@grayDarker:            #222;
-@grayDark:              #303030;
-@gray:                  #555;
-@grayLight:             #999;
-@grayLighter:           #eee;
-@white:                 #fff;
 
-
-// Accent colors
-// -------------------------
-@blue:                  #049cdb;
-@blueDark:              #0064cd;
-@green:                 #46a546;
-@red:                   #9d261d;
-@yellow:                #ffc40d;
-@orange:                #f89406;
-@pink:                  #c3325f;
-@purple:                #7a43b6;
-
-@tapered:				#FF013D;
-@tapegreen:				#33FF02;
-@tapecyan:				#00A5FF;
+@import "variables.less";
 
 /* Page Styles */
 .wysiwyg h1 {
-	border-bottom: solid @tapered 2px;
-	border-bottom: solid #FF013D 2px;
-	color: @tapered;
+	border-bottom: solid @h1color 2px;
+	border-bottom: solid @h1color 2px;
+	color: @h1color;
 	margin: 0 0 7px 0;
 	padding: 0 0 2px 0;
 }
@@ -59,10 +35,11 @@
 #header-container {
 	background-color: @grayDarker;
 	margin: 16px 0 0 0;
-	border-bottom: @tapered solid 2px;
+	border-bottom: @h1color solid 2px;
 }
 
 /* Main Nav */
+
 #main-nav {
 	margin: 8px 0 0 0;
 	font-size: 14px;
@@ -75,17 +52,20 @@
 
 
 #secondary-nav ul {
+	font-size: 14px;
 	list-style-type: none;
-	margin: 0 0 0 30px;
+	margin: 0 0 0 50px;
 	padding: 0;
+	font-variant: small-caps;
+	//text-align: center;
 	li {
-		display: inline;
+		display: inline-block;
 		padding: 0 10px 0 0;
 	}
 }
 
-#secondary-nav .current-menu-item {
-
+#secondary-nav .current-menu-item a {
+	color: @linkColorHover;
 }
 
 /* Main Content Styles */ 
@@ -99,5 +79,5 @@
 #footer-container {
 	background-color: @grayDarker;
 	height: 300px;
-	border-top: @tapegreen solid 2px;
+	border-top: @grayLight solid 2px;
 }

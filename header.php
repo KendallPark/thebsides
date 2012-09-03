@@ -53,7 +53,7 @@
 					<p id="titleline"><?php bloginfo( 'description' ); ?></p>
 				</div> <!-- .span4 -->
 				
-				<div class="span7">
+				<div class="span5">
 						<!-- Sets primary navigation and use wp_page_menu as a fall back -->
 						<nav role="navigation">
 						<div id="main-nav">
@@ -70,15 +70,15 @@
 						</div> <!-- .navbar -->
 						<div id="secondary-nav">
 							<?php 
-								if (is_page("Resources")) {
+								if (is_page("Resources") || is_child(get_ID_by_page_name("Resources")) ) {
 									wp_nav_menu(
 										array ('theme_location' => 'resources',
 											'container_class' => 'menu-header',
 										)
 									);
-								} else if (is_page("Us")) {
+								} else if (is_page("Us") || is_child(get_ID_by_page_name("Us")) ) {
 									wp_nav_menu(
-										array ('theme_location' => 'resources',
+										array ('theme_location' => 'us',
 											'container_class' => 'menu-header',
 										)
 									);
