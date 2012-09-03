@@ -60,5 +60,82 @@ class SocialLinks extends WP_Widget {
 }
 register_widget( 'SocialLinks' );
 
+// Twitter Feed
+class MinitwitterWidget extends WP_Widget {
+	
+	function MinitwitterWidget() {
+		$widget_options = array(
+		'classname'		=>		'minitwitter-widget',
+		'description' 	=>		'Widget which puts the twitter feed on your website.'
+		);
+		
+		parent::WP_Widget('minitwitter-widget', 'miniTwitter', $widget_options);
+	}
+	
+	function widget($args, $instance) {
+		extract($args, EXTR_SKIP);
+		$options = (($instance['username'])?'username:"'.$instance['username'].'",':'username:"webdevdesigner",');
+		$options .= (($instance['limit'])?'limit:'.$instance['limit'].',':'');
+		$options .= (($instance['query'])?'query:'.$instance['query'].',':'');
+		$options .= (($instance['list'])?'list:'.$instance['list'].',':'');
+		$options .= (($instance['linkcolor'])?'linkColor:'.$instance['linkcolor'].',':'');
+		?>
+		<?php echo $before_widget; ?>
+		<?php echo '<div class="tweets"> 
+				<div class="tweets_header">Mini <a href="http://minitwitter.webdevdesigner.com">Tweets</a></div> 
+				<div class="content_tweets_'.$this->get_field_id('id').'"> </div> 
+				<div class="tweets_footer">
+					<span id="bird"></span>
+				</div> 
+			</div>
+			<script type="text/javascript">
+				$(".content_tweets_'.$this->get_field_id('id').'").miniTwitter({
+					'.$options.'
+					retweet:true
+				});
+			</script>';?>
+		<?php echo $after_widget; ?>
+		<?php 
+	}
+
+	function update($new, $old) {
+		return $new;
+	}
+	
+	function form($instance) {
+		?>
+		<p><label for="<?php echo $this->get_field_id('username')?>">
+		Username
+		<input id="<?php echo $this->get_field_id('username')?>" 
+		name="<?php echo $this->get_field_name('username')?>"
+		value="<?php echo $instance['username'];?>" size=10 />
+		</label></p>
+		<p><label for="<?php echo $this->get_field_id('limit')?>">
+		Limit
+		<input id="<?php echo $this->get_field_id('limit')?>" 
+		name="<?php echo $this->get_field_name('limit')?>"
+		value="<?php echo $instance['limit'];?>" size=10 />
+		</label></p>
+		<p><label for="<?php echo $this->get_field_id('list')?>">
+		List
+		<input id="<?php echo $this->get_field_id('list')?>" 
+		name="<?php echo $this->get_field_name('list')?>"
+		value="<?php echo $instance['list'];?>" size=10 />
+		</label></p>
+		<p><label for="<?php echo $this->get_field_id('query')?>">
+		Query
+		<input id="<?php echo $this->get_field_id('query')?>" 
+		name="<?php echo $this->get_field_name('query')?>"
+		value="<?php echo $instance['query'];?>" size=10 />
+		</label></p>
+		<?php 
+	}
+}
+
+function minitwitter_widget_init() {
+	register_widget('MinitwitterWidget');
+}
+add_action('widgets_init', 'minitwitter_widget_init');
+
 
 ?>
