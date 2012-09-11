@@ -1,5 +1,3 @@
-// jquery.minitwitter.js - http://minitwitter.webdevdesigner.com/
-// Copyright © 2012 Olivier Bréchet
 (function( $, window, document, undefined ) {
 
 	$.fn.miniTwitter = function( options ) {

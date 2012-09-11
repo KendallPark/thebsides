@@ -21,11 +21,7 @@ function mtf_create_shortcode( $atts, $content=null ) {
 	$options .= (($atts['linkcolor'])?'linkColor:'.$atts['linkcolor'].',':'');
 	
 	return '<div class="tweets"> 
-				<div class="tweets_header">Mini <a href="http://minitwitter.webdevdesigner.com">Tweets</a></div> 
 				<div class="content_tweets'.$atts['id'].'"> </div> 
-				<div class="tweets_footer">
-					<span id="bird"></span>
-				</div> 
 			</div>
 			<script type="text/javascript">
 				$(".content_tweets'.$atts['id'].'").miniTwitter({

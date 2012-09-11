@@ -16,6 +16,7 @@
 	<link rel="shortcut icon" href="<?php bloginfo('template_directory')?>/favicon.ico">
 	<link href='http://fonts.googleapis.com/css?family=Lato|Revalia' rel='stylesheet' type='text/css'>
 	
+	
 	<!-- Google Analytics -->
 	<script type="text/javascript">
 	  var _gaq = _gaq || [];
@@ -48,6 +49,7 @@
 
 	wp_head();
 ?>
+
 </head>
 <!-- Sets body id to be unique on each page type -->
 <body id="<?php echo basename(get_permalink()); ?>" <?php body_class(); ?>>

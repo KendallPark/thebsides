@@ -33,4 +33,7 @@ require_once('includes/register-widgets.php');
 // Where all sidebars are created for unique pages 
 require_once('includes/register-sidebars.php');
 
+// Where all custom scripts and styles are registered
+//require_once('includes/register-scripts-and-styles.php');
+
 ?>

@@ -18,10 +18,10 @@ function registerScripts() {
         wp_register_script( 'ui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js','jquery');
         
         // Twitter feeds
-		wp_register_script('MiniTwitter', get_bloginfo('template_directory') . '/js/jquery.minitwitter.js');
+		wp_register_script('MiniTwitter', get_bloginfo('template_directory') .'/js/jquery.minitwitter.js', array('jquery');
 		wp_enqueue_script('MiniTwitter');
-		wp_register_style('MiniTwitterCSS', get_bloginfor('template_direactory') . 'css/jquery.tweet.css');
-		wp_enqueue_script('MiniTwitterCSS');
+		wp_register_style('MiniTwitterCSS', get_bloginfo('template_directory') . '/css/jquery.tweet.css');
+		wp_enqueue_style('MiniTwitterCSS');
 
 		wp_register_script('modernizer', get_bloginfo('template_directory') .'/js/modernizr.js','jquery');
 		wp_enqueue_script('modernizer'); // Load Modernizr into the header site wide
