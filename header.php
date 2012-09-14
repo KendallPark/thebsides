@@ -45,7 +45,7 @@
 		</h1>
 		
 		<p><?php bloginfo( 'description' ); ?></p>
-
+		<p>yoyoyoyo</p>
 		<div id="access">
 	  		<!--Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff -->
 			<a id="skip" href="#content" title="<?php esc_attr_e( 'Skip to content', 'padawan' ); ?>"><?php _e( 'Skip to content', 'padawan' ); ?></a>
